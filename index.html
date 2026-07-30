@@ -6450,7 +6450,9 @@
     const savedTheme = localStorage.getItem('reem-portfolio-theme');
     let selectedHue = Number(localStorage.getItem('reem-portfolio-hue')) || 42;
     let wheelDrag = null;
-    if (savedTheme === 'light') document.body.classList.add('light-mode');
+    // Start new visitors in the clean light theme, while respecting a theme
+    // they intentionally selected on an earlier visit.
+    if (savedTheme !== 'dark') document.body.classList.add('light-mode');
 
     function applyAccentHue(hue){
       selectedHue = (hue + 360) % 360;
