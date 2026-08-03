@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3237,6 +3238,101 @@
       }
     }
 
+    /* Home is a focused landing screen: identity, then centered folders. */
+    .shell{
+      display:block !important;
+      width:min(1180px,100%) !important;
+      padding:38px 28px 72px !important;
+    }
+
+    .page{
+      max-width:none !important;
+      margin:0 auto;
+    }
+
+    #home.active-pane{
+      display:flex !important;
+      min-height:calc(100vh - 110px) !important;
+      max-width:980px !important;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:30px 0 80px !important;
+    }
+
+    #home h1{
+      margin:0 !important;
+      font-size:clamp(48px,7vw,78px) !important;
+      line-height:.98 !important;
+      letter-spacing:-.065em !important;
+    }
+
+    #home .hero-type{
+      margin:12px 0 42px !important;
+      font-size:clamp(22px,3vw,34px) !important;
+    }
+
+    #home .side-nav{
+      position:static !important;
+      width:100%;
+      padding:0 !important;
+    }
+
+    #home .section-nav{
+      grid-template-columns:repeat(5,minmax(110px,1fr)) !important;
+      width:min(760px,100%) !important;
+      margin:0 auto !important;
+      gap:18px !important;
+    }
+
+    #home .section-nav a{
+      min-height:112px !important;
+    }
+
+    .about-page .about-gallery{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:12px !important;
+    }
+
+    .about-page .about-gallery figure,
+    .about-page .about-gallery img{
+      width:100% !important;
+      min-width:0 !important;
+    }
+
+    .about-page .about-gallery img{
+      height:clamp(118px,15vw,180px) !important;
+      object-fit:cover !important;
+    }
+
+    .theme-toggle{
+      top:auto !important;
+      right:22px !important;
+      bottom:22px !important;
+    }
+
+    @media(max-width:700px){
+      #home.active-pane{
+        justify-content:flex-start;
+        padding-top:82px !important;
+      }
+
+      #home .section-nav{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:14px !important;
+      }
+
+      .about-page .about-gallery{
+        gap:6px !important;
+      }
+
+      .about-page .about-gallery img{
+        height:104px !important;
+      }
+    }
+
     /* Clean contact and logo treatment */
     .about-sticky .about-contact{
       border-top:0;
@@ -4655,16 +4751,6 @@
       letter-spacing:-.055em;
     }
 
-    #work > h2::after{
-      content:"Current work and past builds.";
-      display:block;
-      margin-top:6px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.4;
-      font-weight:400;
-      letter-spacing:.04em;
-    }
 
     #work .experience-grid{
       grid-column:2;
@@ -4830,6 +4916,634 @@
         height:210px !important;
         min-height:210px !important;
         max-height:210px !important;
+      }
+    }
+
+    /* Final editorial system: visible responsive grids, restrained imagery,
+       and one consistent case-study language across every section. */
+    #projects #project-items.project-visual-grid,
+    #projects #xr-items.project-visual-grid,
+    #hackathons #hackathon-items{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      grid-auto-flow:row !important;
+      grid-auto-columns:auto !important;
+      gap:34px 18px !important;
+      width:100% !important;
+      overflow:visible !important;
+      padding:0 !important;
+      scroll-snap-type:none !important;
+    }
+
+    #projects #project-items.project-visual-grid > .item,
+    #projects #xr-items.project-visual-grid > .item,
+    #hackathons #hackathon-items > .item,
+    #hackathons #hackathon-items > .simple-row{
+      display:block !important;
+      width:auto !important;
+      min-width:0 !important;
+      max-width:none !important;
+      padding:0 !important;
+      margin:0 !important;
+      border:0 !important;
+    }
+
+    #projects #project-items.project-visual-grid > .item > a,
+    #projects #project-items.project-visual-grid > .item > img,
+    #projects #project-items.project-visual-grid > .item > .entry-gallery,
+    #projects #xr-items.project-visual-grid > .item > a,
+    #projects #xr-items.project-visual-grid > .item > img,
+    #projects #xr-items.project-visual-grid > .item > .entry-gallery,
+    #hackathons #hackathon-items .entry-media,
+    #hackathons #hackathon-items .visual-item > a{
+      width:100% !important;
+      min-width:0 !important;
+      max-width:none !important;
+      height:auto !important;
+      min-height:0 !important;
+      max-height:none !important;
+      aspect-ratio:4 / 3;
+      margin:0 0 12px !important;
+      overflow:hidden;
+    }
+
+    #projects #project-items.project-visual-grid > .item > a > img,
+    #projects #project-items.project-visual-grid > .item > img,
+    #projects #project-items.project-visual-grid .entry-gallery .entry-media,
+    #projects #xr-items.project-visual-grid > .item > a > img,
+    #projects #xr-items.project-visual-grid > .item > img,
+    #projects #xr-items.project-visual-grid .entry-gallery .entry-media,
+    #hackathons #hackathon-items .entry-media,
+    #hackathons #hackathon-items .visual-item > a > img{
+      display:block;
+      width:100% !important;
+      height:100% !important;
+      object-fit:cover !important;
+      object-position:center !important;
+      background:transparent !important;
+    }
+
+    #projects #project-items.project-visual-grid .item-top,
+    #projects #xr-items.project-visual-grid .item-top{
+      width:100% !important;
+    }
+
+    #projects .process,
+    #work .process,
+    #hackathons .process{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:0;
+      margin-top:18px;
+      padding-top:0;
+      border-top:1px solid var(--line);
+    }
+
+    #projects .process .note-section,
+    #work .process .note-section,
+    #hackathons .process .note-section{
+      display:grid;
+      grid-template-columns:120px minmax(0,1fr);
+      gap:20px;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    #projects .process .note-section h4,
+    #work .process .note-section h4,
+    #hackathons .process .note-section h4{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:500;
+      letter-spacing:.01em;
+    }
+
+    #projects .process .note-section p,
+    #work .process .note-section p,
+    #hackathons .process .note-section p{
+      margin:0;
+      color:var(--text);
+      font-size:14px;
+      line-height:1.55;
+    }
+
+    #projects .process > .links,
+    #work .process > .links,
+    #hackathons .process > .links{
+      margin:14px 0 0 140px;
+    }
+
+    /* Experience: compact editorial timeline */
+    #work{
+      display:block !important;
+      max-width:980px;
+      margin-inline:auto;
+    }
+
+    #work > h2{
+      margin:0 0 42px !important;
+    }
+
+    #work .experience-grid{
+      display:block !important;
+    }
+
+    #work .experience-grid > .item{
+      width:100% !important;
+      margin:0 !important;
+      padding:22px 0 !important;
+      border:0 !important;
+      border-top:1px solid var(--line) !important;
+      background:transparent !important;
+    }
+
+    #work .experience-grid > .item:last-child{
+      border-bottom:1px solid var(--line) !important;
+    }
+
+    #work .experience-grid > .item .item-top{
+      display:grid !important;
+      grid-template-columns:minmax(0,1fr) max-content !important;
+      align-items:center !important;
+      gap:24px !important;
+      width:100%;
+      padding:0 !important;
+    }
+
+    #work .experience-grid > .item .work-heading{
+      display:grid !important;
+      grid-template-columns:160px minmax(0,1fr) !important;
+      grid-template-rows:auto auto !important;
+      align-items:center !important;
+      gap:2px 24px !important;
+    }
+
+    #work .experience-grid > .item .work-logo,
+    #work .experience-grid > .item .bma-logo-lockup{
+      grid-column:1;
+      grid-row:1 / span 2;
+      justify-self:start;
+      width:132px !important;
+      max-width:132px !important;
+      height:52px !important;
+      margin:0 !important;
+      object-fit:contain !important;
+      object-position:left center !important;
+    }
+
+    #work .experience-grid > .item .work-heading h3{
+      grid-column:2;
+      grid-row:1;
+      margin:0 !important;
+      color:var(--text) !important;
+      font-size:16px !important;
+      line-height:1.35 !important;
+      font-weight:500 !important;
+      letter-spacing:-.018em !important;
+    }
+
+    #work .experience-grid > .item .experience-company{
+      grid-column:2;
+      grid-row:2;
+      margin:3px 0 0 !important;
+      color:var(--muted) !important;
+      font-size:13px !important;
+    }
+
+    #work .experience-grid > .item .date{
+      grid-column:2;
+      grid-row:1 / span 2;
+      margin:0 !important;
+      color:var(--muted) !important;
+      font-size:13px !important;
+      white-space:nowrap;
+    }
+
+    #work .experience-grid > .item::after,
+    #work .experience-grid > .item .item-top::after{
+      display:none !important;
+      content:none !important;
+    }
+
+    #work .experience-grid > .item .experience-summary{
+      display:none !important;
+    }
+
+    #work .experience-grid > .item details{
+      margin:10px 0 0 184px !important;
+    }
+
+    #work .experience-grid > .item details > summary{
+      width:max-content;
+      margin:0 !important;
+      color:var(--muted) !important;
+      font-size:12px !important;
+      font-weight:450 !important;
+    }
+
+    #work .experience-grid > .item details[open]{
+      padding-top:2px;
+    }
+
+    #work .experience-subsection{
+      margin:54px 0 16px !important;
+      font-size:23px !important;
+      font-weight:600 !important;
+      letter-spacing:-.035em !important;
+    }
+
+    /* Honors: one calm, readable recognition list */
+    #honors{
+      margin:0 0 50px;
+    }
+
+    #honors #honor-items{
+      min-height:0;
+    }
+
+    #honors #honor-items > *{
+      display:block !important;
+      padding:20px 0 !important;
+      border:0 !important;
+      border-top:1px solid var(--line) !important;
+      background:transparent !important;
+    }
+
+    #honors #honor-items > *:last-child{
+      border-bottom:1px solid var(--line) !important;
+    }
+
+    #honors .honor-visuals,
+    #honors .honor-photo,
+    #honors .honor-logo{
+      display:none !important;
+    }
+
+    #honors #honor-items h3{
+      margin:0 !important;
+      font-size:17px !important;
+      line-height:1.35 !important;
+      font-weight:550 !important;
+      letter-spacing:-.02em !important;
+    }
+
+    #honors #honor-items p{
+      margin:5px 0 0 !important;
+      font-size:14px !important;
+      line-height:1.5 !important;
+    }
+
+    #honors > h2{
+      display:block !important;
+      margin:0 0 34px;
+    }
+
+    #honors .hackathon-subheading{
+      margin:52px 0 20px;
+      color:var(--text);
+      font-size:23px;
+      font-weight:600;
+      letter-spacing:-.035em;
+    }
+
+    #honors #hackathon-items{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:34px 18px !important;
+      overflow:visible !important;
+    }
+
+    #honors #hackathon-items > *{
+      display:block !important;
+      width:auto !important;
+      min-width:0 !important;
+      padding:0 !important;
+      border:0 !important;
+    }
+
+    #honors #hackathon-items .entry-media{
+      display:block;
+      width:100% !important;
+      height:auto !important;
+      aspect-ratio:4 / 3;
+      margin:0 0 12px !important;
+      object-fit:cover;
+    }
+
+    /* Every folder is a true standalone view. */
+    .browser-mode .page > section.active-pane{
+      width:100%;
+      max-width:980px;
+      margin:0 auto !important;
+      padding:28px 0 72px !important;
+      border:0 !important;
+      background:transparent !important;
+      box-shadow:none !important;
+    }
+
+    .browser-mode .page > section:not(.active-pane){
+      display:none !important;
+    }
+
+    .browser-mode .page > section.active-pane{
+      display:block !important;
+    }
+
+    .browser-mode .page > section.active-pane > h2{
+      margin:0 0 42px !important;
+      font-size:clamp(34px,5vw,54px) !important;
+      line-height:1 !important;
+      font-weight:700 !important;
+      letter-spacing:-.055em !important;
+    }
+
+    /* Projects: a visible grid, never a hidden rail or carousel. */
+    #projects #project-items{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:42px 22px !important;
+      overflow:visible !important;
+      scroll-snap-type:none !important;
+    }
+
+    #projects #project-items > .item{
+      display:block !important;
+      width:auto !important;
+      min-width:0 !important;
+      margin:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      background:transparent !important;
+    }
+
+    #projects #project-items .entry-media,
+    #projects #project-items .entry-gallery{
+      width:100% !important;
+      height:auto !important;
+      aspect-ratio:4 / 3 !important;
+      margin:0 0 14px !important;
+      border:1px solid var(--line) !important;
+      background:transparent !important;
+      object-fit:contain !important;
+    }
+
+    #projects #project-items > .item > a{
+      display:flex !important;
+      width:100% !important;
+      height:auto !important;
+      aspect-ratio:4 / 3 !important;
+      margin:0 0 14px !important;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border:1px solid var(--line) !important;
+      background:transparent !important;
+    }
+
+    #projects #project-items > .item > a > .entry-media,
+    #projects #project-items > .item > .entry-media{
+      display:block !important;
+      width:100% !important;
+      height:100% !important;
+      max-width:100% !important;
+      margin:0 !important;
+      padding:24px !important;
+      border:0 !important;
+      object-fit:contain !important;
+      object-position:center !important;
+    }
+
+    #projects #project-items > .item:not(.brand-logo-project) > a > .entry-media{
+      padding:0 !important;
+      object-fit:cover !important;
+    }
+
+    #projects #project-items .entry-gallery{
+      display:grid !important;
+      grid-template-columns:1fr 1fr !important;
+      overflow:hidden;
+    }
+
+    #projects #project-items .entry-gallery .entry-media{
+      height:100% !important;
+      margin:0 !important;
+      border:0 !important;
+      object-fit:cover !important;
+    }
+
+    #projects #project-items h3{
+      margin:0 0 5px !important;
+      font-size:17px !important;
+      line-height:1.25 !important;
+      font-weight:600 !important;
+      letter-spacing:-.025em !important;
+    }
+
+    #projects #project-items .role,
+    #projects #project-items .date{
+      font-size:13px !important;
+      line-height:1.45 !important;
+    }
+
+    #projects .project-group,
+    #projects .project-rail-control,
+    #projects .project-strip-controls,
+    #projects .project-carousel-controls{
+      display:none !important;
+    }
+
+    /* Intellectual property: three aligned editorial cards. */
+    #intellectual-property .simple-list{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:28px !important;
+      align-items:start !important;
+    }
+
+    #intellectual-property .simple-row{
+      display:block !important;
+      width:auto !important;
+      min-width:0 !important;
+      margin:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      background:transparent !important;
+    }
+
+    #intellectual-property .entry-media{
+      display:block !important;
+      width:100% !important;
+      height:auto !important;
+      aspect-ratio:4 / 3 !important;
+      margin:0 0 18px !important;
+      padding:16px !important;
+      border:1px solid var(--line) !important;
+      border-radius:0 !important;
+      background:transparent !important;
+      object-fit:contain !important;
+    }
+
+    #intellectual-property h3{
+      margin:0 0 9px !important;
+      font-size:19px !important;
+      line-height:1.22 !important;
+      font-weight:600 !important;
+      letter-spacing:-.03em !important;
+    }
+
+    #intellectual-property p{
+      margin:0 0 12px !important;
+      font-size:14px !important;
+      line-height:1.55 !important;
+    }
+
+    /* Honors: simple recognition rows followed by a balanced grid. */
+    #honors #honor-items > *{
+      position:static !important;
+      inset:auto !important;
+      transform:none !important;
+      opacity:1 !important;
+    }
+
+    @media(max-width:860px){
+      #projects #project-items,
+      #intellectual-property .simple-list,
+      #honors #hackathon-items{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      }
+    }
+
+    @media(max-width:600px){
+      .browser-mode .page > section.active-pane{
+        padding:18px 0 54px !important;
+      }
+
+      #projects #project-items,
+      #intellectual-property .simple-list,
+      #honors #hackathon-items{
+        grid-template-columns:1fr !important;
+      }
+    }
+
+    .about-gallery{
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    }
+
+    .about-gallery figure,
+    .about-gallery img{
+      width:100%;
+    }
+
+    .organization-grid{
+      gap:38px 24px;
+    }
+
+    .organization-media-row,
+    .organization-media-row.saplings-media-row,
+    .organization-media-row.organization-media-row-wide{
+      display:block;
+    }
+
+    .organization-media-row img,
+    .organization-media-row.saplings-media-row img,
+    .organization-media-row.organization-media-row-wide img{
+      width:100%;
+      height:150px;
+      object-fit:cover;
+    }
+
+    @media(max-width:900px){
+      #projects #project-items.project-visual-grid,
+      #projects #xr-items.project-visual-grid,
+      #hackathons #hackathon-items{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      }
+
+      #honors #hackathon-items{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      }
+    }
+
+    @media(max-width:600px){
+      #projects #project-items.project-visual-grid,
+      #projects #xr-items.project-visual-grid,
+      #hackathons #hackathon-items{
+        grid-template-columns:1fr !important;
+        gap:32px !important;
+      }
+
+      #honors #hackathon-items{
+        grid-template-columns:1fr !important;
+        gap:32px !important;
+      }
+
+      #projects #project-items.project-visual-grid > .item,
+      #projects #xr-items.project-visual-grid > .item{
+        width:auto !important;
+        min-width:0 !important;
+        max-width:none !important;
+        flex-basis:auto !important;
+      }
+
+      #projects #project-items.project-visual-grid > .item > a,
+      #projects #project-items.project-visual-grid > .item > img,
+      #projects #project-items.project-visual-grid > .item > .entry-gallery,
+      #projects #xr-items.project-visual-grid > .item > a,
+      #projects #xr-items.project-visual-grid > .item > img,
+      #projects #xr-items.project-visual-grid > .item > .entry-gallery{
+        width:100% !important;
+        min-width:0 !important;
+        max-width:none !important;
+        height:auto !important;
+        min-height:0 !important;
+        max-height:none !important;
+        aspect-ratio:4 / 3;
+      }
+
+      #projects .process .note-section,
+      #work .process .note-section,
+      #hackathons .process .note-section{
+        grid-template-columns:1fr;
+        gap:5px;
+      }
+
+      #projects .process > .links,
+      #work .process > .links,
+      #hackathons .process > .links{
+        margin-left:0;
+      }
+
+      .about-gallery{
+        grid-template-columns:1fr !important;
+      }
+
+      #work .experience-grid > .item .item-top{
+        grid-template-columns:1fr !important;
+        gap:8px !important;
+      }
+
+      #work .experience-grid > .item .work-heading{
+        grid-template-columns:96px minmax(0,1fr) !important;
+        gap:2px 12px !important;
+      }
+
+      #work .experience-grid > .item .work-logo,
+      #work .experience-grid > .item .bma-logo-lockup{
+        width:84px !important;
+        max-width:84px !important;
+        height:44px !important;
+      }
+
+      #work .experience-grid > .item .date{
+        grid-column:1 !important;
+        grid-row:auto !important;
+        margin:0 0 0 108px !important;
+        white-space:normal;
+      }
+
+      #work .experience-grid > .item details{
+        margin-left:108px !important;
       }
     }
 
@@ -5253,6 +5967,2371 @@
         font-size:30px;
       }
     }
+    /* Last-word media reset: legacy desktop/file rules cannot crop the grid. */
+    .browser-mode #projects.active-pane #project-items > .item > a,
+    .browser-mode #projects.active-pane #project-items > .item > .entry-media,
+    .browser-mode #projects.active-pane #project-items > .item > .entry-gallery{
+      display:flex !important;
+      width:100% !important;
+      height:auto !important;
+      max-width:none !important;
+      aspect-ratio:4 / 3 !important;
+      margin:0 0 14px !important;
+      align-items:center !important;
+      justify-content:center !important;
+      overflow:hidden !important;
+      border:1px solid var(--line) !important;
+      background:transparent !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items > .item > a > img,
+    .browser-mode #projects.active-pane #project-items > .item > img.entry-media{
+      display:block !important;
+      width:100% !important;
+      height:100% !important;
+      max-width:none !important;
+      margin:0 !important;
+      padding:24px !important;
+      border:0 !important;
+      object-fit:contain !important;
+      object-position:center !important;
+      transform:none !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items > .item:not(.brand-logo-project) > a > img{
+      padding:0 !important;
+      object-fit:cover !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items > .item > .entry-gallery{
+      display:grid !important;
+      grid-template-columns:1fr 1fr !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items > .item > .entry-gallery img{
+      width:100% !important;
+      height:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      object-fit:cover !important;
+    }
+
+    /* Keep every project in one predictable, fully visible grid card. */
+    .browser-mode #projects.active-pane #project-items{
+      align-items:start !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items > .item{
+      display:flex !important;
+      flex-direction:column !important;
+      align-self:start !important;
+      min-height:0 !important;
+      transform:none !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items > .item > div:not(.entry-gallery){
+      display:block !important;
+      width:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+      transform:none !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items .item-top{
+      display:block !important;
+      min-height:0 !important;
+      margin:0 !important;
+      padding:0 !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items .item-top > div{
+      width:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items details{
+      width:100% !important;
+      margin:18px 0 0 !important;
+      padding:0 !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items summary{
+      margin:0 !important;
+      padding:0 !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items .date{
+      display:none !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items > #echo > img.entry-media{
+      box-sizing:border-box !important;
+      padding:24px !important;
+      border:1px solid var(--line) !important;
+      background:transparent !important;
+    }
+
+    /* Final polish: consistent editorial cards and complete image framing. */
+    .browser-mode #projects.active-pane #project-items .brand-logo-project .item-top h3{
+      position:static !important;
+      width:auto !important;
+      height:auto !important;
+      margin:0 0 5px !important;
+      overflow:visible !important;
+      clip:auto !important;
+      white-space:normal !important;
+      font-size:17px !important;
+      line-height:1.25 !important;
+      font-weight:600 !important;
+      letter-spacing:-.025em !important;
+    }
+
+    /* Project cards use the original project artwork as the visual anchor;
+       the brand mark sits quietly in the title row. */
+    .browser-mode #projects.active-pane #project-items .project-logo-title{
+      display:flex !important;
+      align-items:center !important;
+      min-height:34px !important;
+      margin:0 0 6px !important;
+    }
+    .browser-mode #projects.active-pane #project-items .project-logo-title img{
+      display:block !important;
+      width:auto !important;
+      max-width:150px !important;
+      height:30px !important;
+      object-fit:contain !important;
+      object-position:left center !important;
+      padding:0 !important;
+      border:0 !important;
+    }
+    .browser-mode #projects.active-pane #project-items #neurochron .project-logo-title img{
+      max-width:300px !important;
+      height:90px !important;
+    }
+    .browser-mode #projects.active-pane #project-items > #aeris > a > img,
+    .browser-mode #projects.active-pane #project-items > #neurochron > a > img,
+    .browser-mode #projects.active-pane #project-items > #echo > img{
+      padding:0 !important;
+      object-fit:cover !important;
+    }
+    .browser-mode #projects.active-pane .project-strip-controls,
+    .browser-mode #projects.active-pane > .section-next-nav{
+      display:none !important;
+    }
+    .browser-mode #projects.active-pane #project-items details{
+      margin-top:8px !important;
+    }
+    .browser-mode #projects.active-pane .project-details-preserved{
+      display:none !important;
+    }
+    .browser-mode #projects.active-pane details{
+      display:none !important;
+    }
+    .browser-mode #projects.active-pane details > summary{
+      display:none !important;
+    }
+    .browser-mode #projects.active-pane .project-card-description{
+      margin:0 0 10px !important;
+      color:var(--muted) !important;
+      font-size:14px !important;
+      line-height:1.45 !important;
+    }
+    .browser-mode #projects.active-pane .project-links-static{
+      display:flex !important;
+      flex-wrap:wrap !important;
+      gap:10px !important;
+      margin-top:10px !important;
+    }
+    .browser-mode #projects.active-pane .project-links-static a{
+      width:auto !important;
+      height:auto !important;
+      aspect-ratio:auto !important;
+      border:0 !important;
+      margin:0 !important;
+      color:var(--muted) !important;
+      font-size:13px !important;
+    }
+    .browser-mode #projects.active-pane .project-subgrid{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:42px 22px !important;
+      width:100% !important;
+      overflow:visible !important;
+    }
+    .browser-mode #projects.active-pane .project-subgrid > .item{
+      display:flex !important;
+      flex-direction:column !important;
+      min-width:0 !important;
+      margin:0 !important;
+    }
+    .browser-mode #projects.active-pane .project-subgrid > .item > a,
+    .browser-mode #projects.active-pane .project-subgrid > .item > .entry-media,
+    .browser-mode #projects.active-pane .project-subgrid > .item > .entry-gallery{
+      display:flex !important;
+      width:100% !important;
+      aspect-ratio:4 / 3 !important;
+      margin:0 0 14px !important;
+      overflow:hidden !important;
+      align-items:center !important;
+      justify-content:center !important;
+      border:1px solid var(--line) !important;
+      background:transparent !important;
+    }
+    .browser-mode #projects.active-pane .project-subgrid > .item > a > img,
+    .browser-mode #projects.active-pane .project-subgrid > .item > img.entry-media{
+      width:100% !important;
+      height:100% !important;
+      object-fit:cover !important;
+      border:0 !important;
+    }
+    .browser-mode #projects.active-pane #project-items #memory-care .entry-gallery img{
+      object-fit:contain !important;
+      background:transparent !important;
+    }
+    .browser-mode #projects.active-pane #clashxr .entry-gallery{
+      display:grid !important;
+      grid-template-columns:1fr !important;
+      grid-template-rows:repeat(2,minmax(0,1fr)) !important;
+      height:420px !important;
+      gap:6px !important;
+    }
+    .browser-mode #projects.active-pane #clashxr .entry-gallery .entry-media{
+      display:block !important;
+      min-width:0 !important;
+      object-fit:cover !important;
+    }
+    .browser-mode #projects.active-pane #clashxr .entry-gallery .entry-media:first-child{
+      display:none !important;
+    }
+    .browser-mode .about-page .organization-card:has(.bloom-gallery){
+      grid-column:1 / -1 !important;
+    }
+    .browser-mode .about-page .bloom-gallery{
+      display:grid !important;
+      grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+      width:100% !important;
+      gap:10px !important;
+    }
+    .browser-mode .about-page .bloom-gallery img{
+      width:100% !important;
+      height:250px !important;
+      object-fit:cover !important;
+    }
+
+    .browser-mode #projects.active-pane #project-items > .item > div:not(.entry-gallery){
+      min-height:88px !important;
+    }
+
+    .browser-mode #work .experience-grid > .item,
+    .browser-mode #work .experience-grid > .item:hover{
+      background:transparent !important;
+      border:0 !important;
+      border-top:1px solid var(--line) !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      transform:none !important;
+      padding:24px 0 !important;
+    }
+
+    .browser-mode #work .experience-grid{
+      gap:0 !important;
+      grid-template-columns:1fr !important;
+    }
+
+    .browser-mode #work .experience-grid .work-logo{
+      border:0 !important;
+      padding:0 !important;
+      background:transparent !important;
+      height:58px !important;
+      object-fit:contain !important;
+      object-position:left center !important;
+    }
+
+    .browser-mode #work .experience-grid .work-heading h3{
+      font-size:20px !important;
+      font-weight:400 !important;
+      margin:0 !important;
+    }
+
+    .browser-mode #work .experience-subsection{
+      margin:56px 0 0 !important;
+      padding-top:22px !important;
+      border-top:1px solid var(--line) !important;
+    }
+
+    .browser-mode #work .consulting-collection{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:28px 18px !important;
+      margin:0 !important;
+    }
+
+    .browser-mode #work .consulting-collection > .consulting-work-item{
+      display:block !important;
+      padding:0 !important;
+      border:0 !important;
+      background:transparent !important;
+    }
+
+    .browser-mode #work .consulting-work-item .work-logo{
+      width:100% !important;
+      height:150px !important;
+      margin:0 0 12px !important;
+      padding:0 !important;
+      border:1px solid var(--line) !important;
+      object-fit:contain !important;
+      object-position:center !important;
+      background:transparent !important;
+    }
+
+    .browser-mode #work .consulting-work-item .item-top{
+      display:block !important;
+    }
+
+    .browser-mode #work .consulting-work-item .work-heading h3,
+    .browser-mode #work .consulting-work-item .date{
+      display:none !important;
+    }
+
+    .browser-mode #work .consulting-work-item details{
+      margin:0 !important;
+    }
+
+    .browser-mode #work .consulting-work-item summary{
+      display:block !important;
+      color:var(--muted) !important;
+      font-size:13px !important;
+    }
+
+    .browser-mode .organization-grid > .organization-card:last-child{
+      grid-column:auto !important;
+    }
+
+    .browser-mode .organization-grid > .organization-card:last-child .organization-media-row img{
+      height:250px !important;
+      object-fit:contain !important;
+      object-position:center !important;
+      background:transparent !important;
+    }
+
+    .browser-mode #work .experience-grid img[src*="grasshoppher"]{
+      transform:scale(1.8) !important;
+      transform-origin:left center !important;
+    }
+
+    .browser-mode #work .consulting-work-item .links,
+    .browser-mode #work .consulting-work-item .links a{
+      margin-top:0 !important;
+      padding-top:0 !important;
+    }
+
+    .browser-mode #work .consulting-collection{
+      display:block !important;
+      position:relative !important;
+      width:78% !important;
+      margin:0 auto !important;
+    }
+
+    .browser-mode #work .consulting-collection > .consulting-work-item{
+      display:none !important;
+    }
+
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active{
+      display:block !important;
+      width:100% !important;
+    }
+
+    .browser-mode #work .consulting-work-item .work-logo{
+      display:block !important;
+      width:100% !important;
+      height:min(54vh,520px) !important;
+      aspect-ratio:16 / 9 !important;
+      margin:0 0 18px !important;
+      padding:0 !important;
+      border:0 !important;
+      object-position:center !important;
+    }
+
+    .browser-mode #work .consulting-work-item:not(:has(img[src*="nike"]):not(:has(img[src*="crocs"]))) .work-logo{
+      object-fit:contain !important;
+    }
+
+    .browser-mode #work .consulting-slider-controls{
+      width:78% !important;
+      margin:18px auto 0 !important;
+    }
+
+    .browser-mode #work .consulting-slider-controls{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .browser-mode #work .consulting-slider-controls button{
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      font:inherit;
+      cursor:pointer;
+      padding:5px 0;
+    }
+
+    .browser-mode #work .consulting-slider-controls button:hover{
+      color:var(--accent);
+    }
+
+    .browser-mode .bloom-gallery{
+      display:grid !important;
+      grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+      gap:8px !important;
+      width:100% !important;
+    }
+
+    .browser-mode .bloom-gallery img{
+      width:100% !important;
+      height:360px !important;
+      object-fit:cover !important;
+      object-position:center !important;
+      background:transparent !important;
+    }
+
+    .browser-mode #projects.active-pane > .section-next-nav{
+      margin-top:92px !important;
+      padding-bottom:30px !important;
+    }
+
+    .browser-mode .section-next-nav button{
+      min-height:30px !important;
+      padding:0 3px !important;
+      border:0 !important;
+      border-radius:0 !important;
+      background:transparent !important;
+    }
+
+    .draw-toggle{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      z-index:110;
+      width:38px;
+      height:38px;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:var(--bg);
+      color:var(--muted);
+      font-size:20px;
+      line-height:1;
+      cursor:pointer;
+      transition:color .18s ease,transform .18s ease;
+    }
+
+    .draw-toggle:hover,
+    .draw-toggle.is-active{
+      color:var(--accent);
+      transform:rotate(-8deg) scale(1.06);
+    }
+
+    .drawing-canvas{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      width:100vw;
+      height:100vh;
+      pointer-events:none;
+      opacity:.72;
+      touch-action:none;
+    }
+
+    .drawing-canvas.is-active{
+      pointer-events:auto;
+      cursor:crosshair;
+    }
+
+    .drawing-tools{
+      position:fixed;
+      right:72px;
+      bottom:23px;
+      z-index:110;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      background:var(--bg);
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .drawing-tools button{
+      border:0;
+      background:transparent;
+      color:inherit;
+      font:inherit;
+      cursor:pointer;
+      padding:2px;
+    }
+
+    .drawing-tools button:hover{color:var(--accent)}
+    .drawing-tools input[type="color"]{
+      width:18px;
+      height:18px;
+      padding:0;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    body:not(.home-pane-active) .draw-toggle,
+    body:not(.home-pane-active) .drawing-tools,
+    body:not(.home-pane-active) .drawing-canvas{
+      display:none !important;
+    }
+
+    @media(max-width:600px){
+      .draw-toggle{right:16px;bottom:16px}
+      .drawing-tools{right:16px;bottom:62px;gap:7px}
+    }
+    /* XR grid normalization: keep every card on the same editorial frame. */
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:34px 18px !important;
+      width:100% !important;
+      overflow:visible !important;
+      align-items:start !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > .item{
+      display:flex !important;
+      flex-direction:column !important;
+      flex:initial !important;
+      width:auto !important;
+      min-width:0 !important;
+      max-width:none !important;
+      min-height:0 !important;
+      align-self:start !important;
+      transform:none !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > .item > a,
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > .item > img.entry-media,
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > .item > .entry-gallery{
+      display:flex !important;
+      width:100% !important;
+      height:auto !important;
+      min-height:0 !important;
+      max-height:none !important;
+      aspect-ratio:4 / 3 !important;
+      margin:0 0 14px !important;
+      overflow:hidden !important;
+      align-items:center !important;
+      justify-content:center !important;
+      border:1px solid var(--line) !important;
+      background:transparent !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > .item > a > img,
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > .item > img.entry-media{
+      display:block !important;
+      width:100% !important;
+      height:100% !important;
+      min-height:0 !important;
+      max-height:none !important;
+      margin:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      object-fit:cover !important;
+      object-position:center !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > .item > div:not(.entry-gallery){
+      min-height:0 !important;
+      width:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+    }
+    /* ClashXR keeps its two strongest gameplay moments, stacked inside the same frame. */
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > #clashxr > .entry-gallery{
+      display:grid !important;
+      grid-template-columns:1fr !important;
+      grid-template-rows:repeat(2,minmax(0,1fr)) !important;
+      height:auto !important;
+      aspect-ratio:4 / 3 !important;
+      gap:6px !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > #clashxr > .entry-gallery .entry-media{
+      display:none !important;
+      width:100% !important;
+      height:100% !important;
+      min-height:0 !important;
+      max-height:none !important;
+      margin:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      object-fit:cover !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > #clashxr > .entry-gallery .entry-media:nth-child(2),
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > #clashxr > .entry-gallery .entry-media:nth-child(3){
+      display:block !important;
+    }
+    @media(max-width:900px){
+      .browser-mode #projects.active-pane #xr-items.project-visual-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      }
+    }
+    @media(max-width:600px){
+      .browser-mode #projects.active-pane #xr-items.project-visual-grid{
+        grid-template-columns:1fr !important;
+      }
+    }
+    /* Bloom is a full-width visual row, not a single organization column. */
+    .browser-mode #about.about-page .organization-grid > .organization-card:has(.bloom-gallery){
+      grid-column:1 / -1 !important;
+      width:100% !important;
+    }
+    .browser-mode #about.about-page .organization-media-row-wide:has(.bloom-gallery){
+      display:block !important;
+      width:100% !important;
+    }
+    .browser-mode #about.about-page .bloom-gallery{
+      display:grid !important;
+      grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+      width:100% !important;
+      gap:12px !important;
+    }
+    .browser-mode #about.about-page .bloom-gallery img{
+      display:block !important;
+      width:100% !important;
+      height:360px !important;
+      min-height:360px !important;
+      object-fit:cover !important;
+      object-position:center !important;
+    }
+
+    /* Patent cards: remove the dark frame and give the sanitation device room. */
+    .browser-mode #intellectual-property .simple-row.visual-item > a,
+    .browser-mode #intellectual-property .simple-row.visual-item > .entry-media{
+      border:0 !important;
+      background:transparent !important;
+      padding:0 !important;
+    }
+    .browser-mode #intellectual-property #aims .entry-media{
+      background:transparent !important;
+      object-fit:contain !important;
+    }
+    .browser-mode #intellectual-property #aims > a{
+      border:0 !important;
+      outline:0 !important;
+      box-shadow:none !important;
+    }
+    .browser-mode #intellectual-property .sanitation-image-zoom{
+      transform:scale(2.25) !important;
+      transform-origin:center !important;
+    }
+
+    /* Experience: a compact horizontal timeline for the core roles. */
+    .browser-mode #work .experience-grid{
+      position:relative !important;
+      display:grid !important;
+      grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+      column-gap:18px !important;
+      row-gap:0 !important;
+      padding-top:28px !important;
+    }
+    .browser-mode #work .experience-grid::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:7px;
+      height:1px;
+      background:var(--line);
+    }
+    .browser-mode #work .experience-grid > .logo-work-item{
+      position:relative !important;
+      border:0 !important;
+      border-top:0 !important;
+      padding:22px 0 8px !important;
+      min-width:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item::before{
+      content:"";
+      position:absolute;
+      top:1px;
+      left:0;
+      width:9px;
+      height:9px;
+      border:2px solid var(--accent);
+      border-radius:50%;
+      background:var(--bg);
+      transform:translateY(-50%);
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .item-top,
+    .browser-mode #work .experience-grid > .logo-work-item .work-heading{
+      display:block !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-logo{
+      width:100% !important;
+      max-width:150px !important;
+      height:44px !important;
+      object-position:left center !important;
+      margin:0 0 12px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-heading h3{
+      font-size:16px !important;
+      line-height:1.25 !important;
+      font-weight:400 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .experience-company{
+      margin:4px 0 0 !important;
+      color:var(--muted) !important;
+      font-size:13px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .date{
+      margin-top:8px !important;
+      font-size:12px !important;
+      color:var(--muted) !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .experience-summary{
+      display:block !important;
+      margin:12px 0 0 !important;
+      font-size:12px !important;
+      line-height:1.4 !important;
+      color:var(--muted) !important;
+      max-width:34ch !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .experience-links-static{
+      display:flex !important;
+      gap:12px !important;
+      margin:10px 0 0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .experience-links-static a{
+      color:var(--muted) !important;
+      font-size:12px !important;
+      text-decoration:underline !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item,
+    .browser-mode #work .experience-grid > .logo-work-item:hover{
+      border-top:0 !important;
+      border-bottom:0 !important;
+      border-color:transparent !important;
+      box-shadow:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:hover,
+    .browser-mode #work .experience-grid > .logo-work-item .work-logo:hover{
+      transform:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item,
+    .browser-mode #work .experience-grid > .logo-work-item:hover,
+    .browser-mode #work .experience-grid > .logo-work-item:hover h3,
+    .browser-mode #work .experience-grid > .logo-work-item:hover .work-logo{
+      transition:none !important;
+      transform:none !important;
+      filter:none !important;
+      color:inherit !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .item-top{
+      display:flex !important;
+      align-items:center !important;
+      justify-content:space-between !important;
+      gap:14px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-heading{
+      display:flex !important;
+      align-items:center !important;
+      gap:14px !important;
+      min-width:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-logo,
+    .browser-mode #work .experience-grid > .logo-work-item .bma-full-logo{
+      flex:0 0 150px !important;
+      width:150px !important;
+      max-width:150px !important;
+      height:58px !important;
+      margin:0 !important;
+      object-fit:contain !important;
+      object-position:left center !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-heading h3{
+      white-space:nowrap !important;
+      margin:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .experience-company{
+      display:inline !important;
+      margin:0 0 0 8px !important;
+      white-space:nowrap !important;
+    }
+    .browser-mode #work .consulting-collection{
+      width:100% !important;
+      max-width:1100px !important;
+      margin-left:0 !important;
+      margin-right:auto !important;
+    }
+    .browser-mode #work .consulting-links-static{
+      grid-column:2 !important;
+      display:flex !important;
+      flex-wrap:wrap !important;
+      gap:12px !important;
+      margin:14px 0 0 !important;
+    }
+    .browser-mode #work .consulting-links-static a{
+      color:var(--muted) !important;
+      font-size:13px !important;
+      text-decoration:underline !important;
+    }
+    /* Stable timeline rows: each logo, role, company, and date gets its own
+       predictable line so narrow columns never collide. */
+    .browser-mode #work .experience-grid > .logo-work-item .item-top{
+      display:block !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-heading{
+      display:block !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-logo,
+    .browser-mode #work .experience-grid > .logo-work-item .bma-full-logo{
+      display:block !important;
+      width:150px !important;
+      max-width:150px !important;
+      height:54px !important;
+      margin:0 0 10px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-heading h3,
+    .browser-mode #work .experience-grid > .logo-work-item .experience-company{
+      display:inline !important;
+      white-space:normal !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .experience-company{
+      margin-left:6px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .date{
+      display:block !important;
+      margin:7px 0 0 !important;
+    }
+    /* The consulting slide is a true left-image/right-copy composition. */
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active{
+      display:grid !important;
+      grid-template-columns:minmax(0,58%) minmax(0,42%) !important;
+      gap:28px !important;
+      align-items:start !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .item-top,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-heading{
+      display:contents !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-logo{
+      grid-column:1 !important;
+      grid-row:1 / span 4 !important;
+      width:100% !important;
+      height:min(48vh,460px) !important;
+      margin:0 !important;
+      object-fit:cover !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .experience-summary,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .company-site-link,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .consulting-links-static{
+      grid-column:2 !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > #clashxr > div:last-child{
+      transform:translateY(-8px) !important;
+    }
+    .browser-mode #work .experience-subsection,
+    .browser-mode #work .consulting-collection{
+      grid-column:1 / -1 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item details,
+    .browser-mode #work .experience-grid > .logo-work-item details > summary{
+      display:none !important;
+    }
+
+    /* Consulting remains a focused visual section, without the oversized crop. */
+    .browser-mode #work .consulting-collection{
+      width:100% !important;
+      max-width:920px !important;
+      margin:0 !important;
+    }
+    .browser-mode #work .consulting-work-item .work-logo{
+      width:100% !important;
+      height:min(42vh,400px) !important;
+      aspect-ratio:16 / 9 !important;
+      object-fit:contain !important;
+      background:transparent !important;
+      margin:0 0 14px !important;
+    }
+    .browser-mode #work .consulting-slider-controls{width:100% !important;margin:10px 0 0 !important}
+    .browser-mode #work .consulting-work-item .company-site-link{display:inline-block !important;margin-top:6px !important}
+    .browser-mode #work .consulting-work-item details,
+    .browser-mode #work .consulting-work-item details > summary{
+      display:none !important;
+    }
+    /* Align the three project marks while keeping their visual weight intentional. */
+    .browser-mode #projects.active-pane #project-items .project-logo-title{
+      align-items:flex-start !important;
+      min-height:58px !important;
+    }
+    .browser-mode #projects.active-pane #project-items #aeris .project-logo-title img{
+      transform:translateY(-10px) !important;
+    }
+    .browser-mode #projects.active-pane #project-items #neurochron .project-logo-title img{
+      transform:translateY(-20px) !important;
+      max-width:300px !important;
+      height:90px !important;
+    }
+    .browser-mode #projects.active-pane #project-items #echo > img.entry-media{
+      padding:0 !important;
+      object-fit:cover !important;
+      transform:scale(1.18) !important;
+      transform-origin:center !important;
+    }
+
+    /* Final media alignment pass. */
+    .browser-mode #projects.active-pane #project-items #neurochron .project-logo-title img{
+      transform:translateY(-30px) !important;
+    }
+    .browser-mode #projects.active-pane #project-items #echo > img.entry-media{
+      width:100% !important;
+      height:100% !important;
+      max-width:none !important;
+      margin:0 0 14px !important;
+      padding:0 !important;
+      aspect-ratio:4 / 3 !important;
+      object-fit:cover !important;
+      transform:none !important;
+    }
+    /* ClashXR uses one strong gameplay frame, matching the other XR cards. */
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > #clashxr > .entry-gallery{
+      display:block !important;
+      height:auto !important;
+      aspect-ratio:4 / 3 !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > #clashxr > .entry-gallery .entry-media{
+      display:none !important;
+      width:100% !important;
+      height:100% !important;
+      object-fit:cover !important;
+    }
+    .browser-mode #projects.active-pane #xr-items.project-visual-grid > #clashxr > .entry-gallery .entry-media:first-child{
+      display:block !important;
+    }
+
+    /* Project cards share one consistent frame; hover adds a quiet, tactile lift. */
+    .browser-mode #projects.active-pane #project-items .entry-media,
+    .browser-mode #projects.active-pane #xr-items .entry-media,
+    .browser-mode #projects.active-pane #other-items .entry-media{
+      transition:transform .2s ease !important;
+    }
+    .browser-mode #projects.active-pane #project-items .entry-media:hover,
+    .browser-mode #projects.active-pane #xr-items .entry-media:hover,
+    .browser-mode #projects.active-pane #other-items .entry-media:hover{
+      transform:scale(1.04) rotate(.6deg) !important;
+    }
+    /* Keep the patent artwork floating cleanly on the page. */
+    .browser-mode #intellectual-property #aims,
+    .browser-mode #intellectual-property #aims > a,
+    .browser-mode #intellectual-property #aims > a > img{
+      border:0 !important;
+      outline:0 !important;
+      box-shadow:none !important;
+      background:transparent !important;
+    }
+    .browser-mode #intellectual-property .sanitation-image-zoom{
+      background:#fff !important;
+      transform:scale(2.6) !important;
+      transform-origin:center !important;
+    }
+
+    /* Experience and consulting polish. */
+    .browser-mode #work .experience-grid > .logo-work-item .bma-full-logo{
+      max-width:300px !important;
+      height:88px !important;
+    }
+    .browser-mode #work .experience-grid img[src*="grasshoppher"]{
+      transform:scale(3) !important;
+      transform-origin:left center !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active{
+      display:grid !important;
+      grid-template-columns:minmax(0,58%) minmax(220px,1fr) !important;
+      align-items:start !important;
+      column-gap:28px !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-logo{
+      grid-column:1 !important;
+      grid-row:1 / span 4 !important;
+      width:100% !important;
+      height:min(48vh,460px) !important;
+      margin:0 !important;
+      object-fit:cover !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .item-top,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .experience-summary,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .company-site-link{
+      grid-column:2 !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .experience-summary{
+      display:block !important;
+      margin:12px 0 0 !important;
+      max-width:38ch !important;
+      color:var(--muted) !important;
+      font-size:14px !important;
+      line-height:1.5 !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .company-site-link{
+      margin:12px 0 0 !important;
+      color:var(--muted) !important;
+      font-size:13px !important;
+      text-decoration:underline !important;
+    }
+    @media(max-width:700px){
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active{
+        grid-template-columns:1fr !important;
+      }
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-logo,
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .item-top,
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .experience-summary,
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .company-site-link{
+        grid-column:1 !important;
+      }
+    }
+    @media(max-width:900px){
+      .browser-mode #work .experience-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;row-gap:26px !important}
+    }
+
+    /* Experience and consulting are intentionally static: no hover lift, zoom,
+       border animation, or color shift on company rows. */
+    .browser-mode #work .experience-grid > .item,
+    .browser-mode #work .experience-grid > .item:hover,
+    .browser-mode #work .consulting-collection > .consulting-work-item,
+    .browser-mode #work .consulting-collection > .consulting-work-item:hover,
+    .browser-mode #work .consulting-collection .work-logo,
+    .browser-mode #work .consulting-collection .work-logo:hover{
+      transition:none !important;
+      transform:none !important;
+      filter:none !important;
+      box-shadow:none !important;
+    }
+    .browser-mode #work .experience-grid > .item:hover,
+    .browser-mode #work .consulting-collection > .consulting-work-item:hover{
+      border-color:transparent !important;
+      color:inherit !important;
+    }
+
+    /* Hard-stop hover motion on every experience element.  GrasshoppHer has a
+       deliberate static size scale, so preserve that exact scale on hover. */
+    .browser-mode #work .experience-grid > .logo-work-item:hover,
+    .browser-mode #work .experience-grid > .logo-work-item:hover *,
+    .browser-mode #work .consulting-collection > .consulting-work-item:hover,
+    .browser-mode #work .consulting-collection > .consulting-work-item:hover *{
+      transition:none !important;
+      animation:none !important;
+      filter:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:hover{
+      transform:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:hover .work-logo:not(.grasshoppher-transparent-logo),
+    .browser-mode #work .experience-grid > .logo-work-item:hover .bma-full-logo{
+      transform:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:hover .grasshoppher-transparent-logo,
+    .browser-mode #work .experience-grid img[src*="grasshoppher"]{
+      transform:scale(3) !important;
+      transform-origin:left center !important;
+    }
+    @media(max-width:600px){
+      .browser-mode #work .experience-grid{grid-template-columns:1fr !important;padding-top:22px !important}
+      .browser-mode #work .experience-grid::before{left:0;right:auto;top:0;bottom:0;width:1px;height:auto}
+      .browser-mode #work .experience-grid > .logo-work-item::before{left:-4px;top:0}
+    }
+
+    /* Final static alignment for core experience rows. */
+    .browser-mode #work .experience-grid{
+      grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+      align-items:start !important;
+      gap:34px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item){
+      min-width:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:flex-start !important;
+      transition:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-logo,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .bma-full-logo{
+      width:100% !important;
+      max-width:180px !important;
+      height:64px !important;
+      margin:0 0 16px !important;
+      object-fit:contain !important;
+      object-position:left center !important;
+      transition:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading h3,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .experience-company{
+      display:block !important;
+      margin:0 !important;
+      white-space:normal !important;
+      line-height:1.25 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .experience-company{
+      color:var(--muted) !important;
+      font-size:.9em !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .date{
+      margin:12px 0 0 !important;
+      min-height:1.2em !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .experience-summary{
+      min-height:5.3em !important;
+      margin-top:14px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item):hover,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item):hover *{
+      transform:none !important;
+      transition:none !important;
+      animation:none !important;
+      filter:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) img[src*="grasshoppher"]{
+      transform:scale(3) !important;
+      transform-origin:left center !important;
+    }
+
+    /* Restore the clean patent grid: transparent media, equal frames, no cards. */
+    .browser-mode #intellectual-property .simple-list{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:34px 22px !important;
+      border:0 !important;
+    }
+    .browser-mode #intellectual-property .simple-row.visual-item{
+      display:block !important;
+      padding:0 !important;
+      border:0 !important;
+      background:transparent !important;
+    }
+    .browser-mode #intellectual-property .simple-row.visual-item > a,
+    .browser-mode #intellectual-property .simple-row.visual-item > .entry-media{
+      display:block !important;
+      width:100% !important;
+      height:210px !important;
+      margin:0 0 14px !important;
+      padding:0 !important;
+      object-fit:contain !important;
+      background:transparent !important;
+      border:0 !important;
+      box-shadow:none !important;
+    }
+    .browser-mode #honors details,
+    .browser-mode #honors details > summary{display:none !important;}
+
+    /* Final typography and spacing pass. */
+    .browser-mode .page > section > h2,
+    .browser-mode #projects .project-group,
+    .browser-mode #work .experience-subsection,
+    .browser-mode #intellectual-property > h2,
+    .browser-mode #honors > h2,
+    .browser-mode #projects .item h3,
+    .browser-mode #intellectual-property .simple-row h3{
+      font-weight:560 !important;
+    }
+    .browser-mode #work .experience-grid{
+      border-top:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item .work-heading h3{
+      font-weight:500 !important;
+    }
+    .browser-mode #honors #hackathon-items{
+      display:grid !important;
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      gap:26px 34px !important;
+    }
+    .browser-mode #honors #hackathon-items > *{
+      min-width:0 !important;
+      padding:0 !important;
+      border:0 !important;
+    }
+    .browser-mode #honors #hackathon-items .entry-media,
+    .browser-mode #honors #hackathon-items .visual-item > a{
+      width:100% !important;
+      height:170px !important;
+      margin-bottom:12px !important;
+    }
+    .browser-mode #honors #hackathon-items h3{font-weight:520 !important;}
+    .browser-mode #honors #hackathon-items p{margin-top:6px !important;}
+
+    /* Opening a core experience reveals its details below the card without
+       changing the position of the neighboring experience. */
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item){
+      position:relative !important;
+      min-height:260px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > details{
+      position:absolute !important;
+      z-index:5 !important;
+      left:0 !important;
+      top:100% !important;
+      width:100% !important;
+      margin:0 !important;
+      padding:14px 0 !important;
+      background:var(--bg) !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active{
+      align-items:start !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-logo,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .experience-summary,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .company-site-link,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .consulting-links-static{
+      align-self:start !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .experience-summary{
+      margin:0 !important;
+      padding:0 !important;
+    }
+    /* Consulting slides use one consistent image-left / copy-right frame. */
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active{
+      display:grid !important;
+      grid-template-columns:minmax(0,58%) minmax(0,42%) !important;
+      grid-template-rows:auto auto auto auto !important;
+      column-gap:28px !important;
+      row-gap:10px !important;
+      align-items:start !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .item-top,
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-heading{
+      display:contents !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-logo{
+      grid-column:1 !important;
+      grid-row:1 / span 4 !important;
+      width:100% !important;
+      height:min(48vh,460px) !important;
+      margin:0 !important;
+      object-fit:cover !important;
+      object-position:center !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-heading h3{
+      grid-column:2 !important;
+      grid-row:1 !important;
+      margin:0 !important;
+      align-self:start !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .date{
+      grid-column:2 !important;
+      grid-row:1 !important;
+      justify-self:end !important;
+      margin:0 !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .experience-summary{
+      grid-column:2 !important;
+      grid-row:2 !important;
+      margin:0 !important;
+      max-width:42ch !important;
+      align-self:start !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .company-site-link{
+      grid-column:2 !important;
+      grid-row:3 !important;
+      margin:0 !important;
+      align-self:start !important;
+    }
+    .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .consulting-links-static{
+      grid-column:2 !important;
+      grid-row:4 !important;
+      margin:0 !important;
+      align-self:start !important;
+    }
+    @media(max-width:700px){
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active{
+        grid-template-columns:1fr !important;
+        grid-template-rows:auto !important;
+      }
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-logo,
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .work-heading h3,
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .date,
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .experience-summary,
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .company-site-link,
+      .browser-mode #work .consulting-collection > .consulting-work-item.is-consulting-active .consulting-links-static{
+        grid-column:1 !important;
+        grid-row:auto !important;
+        justify-self:start !important;
+      }
+    }
+
+    /* Final project grouping and static honors presentation. */
+    .browser-mode #projects.active-pane > .project-group{
+      display:block !important;
+      clear:both !important;
+      margin:42px 0 18px !important;
+    }
+    .browser-mode #projects.active-pane > .project-subgrid{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:34px 22px !important;
+      width:100% !important;
+      overflow:visible !important;
+    }
+    .browser-mode #projects.active-pane > .project-subgrid > .item{
+      min-width:0 !important;
+    }
+    .browser-mode #honors #honor-items > *{
+      display:block !important;
+      padding:22px 0 !important;
+      border-top:1px solid var(--line) !important;
+    }
+    .browser-mode #honors #honor-items > *:last-child{border-bottom:1px solid var(--line) !important;}
+    .browser-mode #honors .honor-slider-controls{display:none !important;}
+
+    /* One unified top navigation across the home screen and every folder. */
+    .browser-mode .side-nav{
+      position:fixed !important;
+      z-index:80 !important;
+      top:16px !important;
+      left:clamp(24px,6vw,84px) !important;
+      right:clamp(24px,6vw,84px) !important;
+      width:auto !important;
+      display:flex !important;
+      align-items:center !important;
+      justify-content:space-between !important;
+      gap:28px !important;
+      padding:0 !important;
+      margin:0 !important;
+      background:transparent !important;
+    }
+    .browser-mode .side-nav .nav-brand{
+      display:inline-block !important;
+      flex:0 0 auto !important;
+      color:var(--text) !important;
+      font-size:15px !important;
+      font-weight:560 !important;
+      letter-spacing:-.02em !important;
+      text-decoration:none !important;
+    }
+    .browser-mode .side-nav .section-nav{
+      display:flex !important;
+      flex-direction:row !important;
+      flex-wrap:nowrap !important;
+      align-items:center !important;
+      justify-content:flex-end !important;
+      gap:22px !important;
+      width:auto !important;
+      margin:0 !important;
+    }
+    .browser-mode .side-nav .section-nav a{
+      display:inline-flex !important;
+      flex-direction:column !important;
+      min-height:0 !important;
+      width:auto !important;
+      align-items:center !important;
+      gap:6px !important;
+      padding:0 !important;
+      color:var(--muted) !important;
+      font-size:13px !important;
+      text-decoration:none !important;
+      background:transparent !important;
+    }
+    .browser-mode .side-nav .section-nav a.active,
+    .browser-mode .side-nav .section-nav a:hover{color:var(--text) !important;}
+    @media(max-width:700px){
+      .browser-mode .side-nav{left:18px !important;right:18px !important;gap:12px !important;}
+      .browser-mode .side-nav .section-nav{gap:10px !important;overflow-x:auto !important;}
+      .browser-mode .side-nav .section-nav a{font-size:11px !important;white-space:nowrap !important;}
+    }
+    .browser-mode #projects.active-pane #project-items #echo > img.entry-media:hover{
+      transform:scale(1.03) rotate(.4deg) !important;
+      transition:transform .2s ease !important;
+    }
+    /* Keep the Echo mark aligned with the other project logos. */
+    .browser-mode #projects.active-pane #project-items #echo .project-logo-title img{
+      transform:translateY(-19px) !important;
+    }
+    /* Center the home desktop and keep its folders in one calm row. */
+    .browser-mode:has(#home.active-pane) .shell{
+      width:min(1180px,calc(100vw - 48px)) !important;
+      margin-inline:auto !important;
+    }
+    .browser-mode:has(#home.active-pane) .side-nav{
+      position:static !important;
+      width:100% !important;
+      margin:0 auto 34px !important;
+      padding-top:4px !important;
+      transform:none !important;
+      flex-direction:column !important;
+      justify-content:center !important;
+      align-items:center !important;
+      gap:12px !important;
+    }
+    .browser-mode:has(#home.active-pane) .side-nav .nav-brand{
+      text-align:center !important;
+    }
+    .browser-mode:has(#home.active-pane) .side-nav .section-nav{
+      width:100% !important;
+      display:flex !important;
+      flex-wrap:nowrap !important;
+      justify-content:center !important;
+      align-items:flex-start !important;
+      gap:clamp(16px,3vw,42px) !important;
+    }
+    .browser-mode:has(#home.active-pane) .side-nav .section-nav a{
+      flex:0 0 auto !important;
+      flex-direction:column !important;
+      min-height:0 !important;
+      width:auto !important;
+      text-align:center !important;
+      gap:5px !important;
+    }
+    .browser-mode:has(#home.active-pane) .side-nav .section-nav a .dot{
+      width:62px !important;
+      height:48px !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane{
+      width:100% !important;
+      margin-inline:auto !important;
+      padding-top:4px !important;
+      text-align:center !important;
+    }
+    /* Lift the oversized GrasshoppHer mark without changing its column. */
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) img[src*="grasshoppher"]{
+      transform:translateY(-38px) scale(3) !important;
+      transform-origin:left center !important;
+    }
+    /* Experience timeline: compact date rail with logo-led role rows. */
+    .browser-mode #work .experience-grid{
+      display:grid !important;
+      grid-template-columns:1fr !important;
+      gap:0 !important;
+      width:100% !important;
+      max-width:1080px !important;
+      margin-inline:auto !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item){
+      display:block !important;
+      width:100% !important;
+      min-height:0 !important;
+      padding:28px 0 !important;
+      border-top:1px solid var(--line) !important;
+      background:transparent !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .item-top{
+      display:grid !important;
+      grid-template-columns:clamp(92px,14vw,150px) minmax(0,1fr) !important;
+      align-items:start !important;
+      gap:18px !important;
+      margin:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .date{
+      grid-column:1 !important;
+      grid-row:1 !important;
+      margin:4px 0 0 !important;
+      color:var(--muted) !important;
+      font-size:15px !important;
+      white-space:nowrap !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading{
+      grid-column:2 !important;
+      grid-row:1 !important;
+      display:grid !important;
+      grid-template-columns:82px minmax(0,1fr) !important;
+      align-items:center !important;
+      column-gap:18px !important;
+      min-width:0 !important;
+      margin:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading .work-logo,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading .bma-full-logo{
+      grid-column:1 !important;
+      width:76px !important;
+      max-width:76px !important;
+      height:48px !important;
+      margin:0 !important;
+      object-fit:contain !important;
+      object-position:left center !important;
+      transform:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading h3,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .experience-company{
+      grid-column:2 !important;
+      margin:0 !important;
+      white-space:normal !important;
+      line-height:1.25 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading h3{
+      font-size:22px !important;
+      font-weight:500 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .experience-company{
+      color:var(--muted) !important;
+      font-size:17px !important;
+      margin-top:4px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-summary,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-links-static{
+      margin-left:clamp(110px,calc(14vw + 18px),168px) !important;
+      max-width:58ch !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-summary{
+      margin-top:14px !important;
+      color:var(--muted) !important;
+      font-size:15px !important;
+      line-height:1.5 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-links-static{
+      margin-top:10px !important;
+    }
+    /* Reference-style hover notes: keep the timeline stable, reveal context in place. */
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .item-top::before,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .item-top::after,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item)::before,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item)::after{
+      display:none !important;
+      content:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item){
+      min-height:148px !important;
+      overflow:visible !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-summary{
+      position:absolute !important;
+      left:100px !important;
+      right:170px !important;
+      top:88px !important;
+      margin:0 !important;
+      max-width:none !important;
+      max-height:0 !important;
+      overflow:hidden !important;
+      opacity:0 !important;
+      visibility:hidden !important;
+      pointer-events:none !important;
+      transition:opacity .16s ease, max-height .16s ease !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item):hover > .experience-summary,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item):focus-within > .experience-summary{
+      max-height:58px !important;
+      opacity:1 !important;
+      visibility:visible !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-links-static{
+      position:absolute !important;
+      left:100px !important;
+      top:120px !important;
+      margin:0 !important;
+      opacity:0 !important;
+      visibility:hidden !important;
+      pointer-events:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item):hover > .experience-links-static,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item):focus-within > .experience-links-static{
+      opacity:1 !important;
+      visibility:visible !important;
+      pointer-events:auto !important;
+    }
+    @media(max-width:600px){
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item){min-height:164px !important;}
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-summary,
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-links-static{
+        left:90px !important;
+        right:8px !important;
+      }
+    }
+    @media(max-width:600px){
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .item-top{
+        grid-template-columns:78px minmax(0,1fr) !important;
+        gap:12px !important;
+      }
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading{
+        grid-template-columns:64px minmax(0,1fr) !important;
+        column-gap:10px !important;
+      }
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading .work-logo,
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading .bma-full-logo{
+        width:60px !important;
+        max-width:60px !important;
+      }
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-summary,
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-links-static{
+        margin-left:90px !important;
+      }
+    }
+    @media(max-width:700px){
+      .browser-mode:has(#home.active-pane) .shell{width:calc(100vw - 28px) !important;}
+      .browser-mode:has(#home.active-pane) .side-nav .section-nav{
+        gap:10px !important;
+        overflow-x:auto !important;
+        justify-content:flex-start !important;
+        padding-bottom:4px !important;
+      }
+      .browser-mode:has(#home.active-pane) .side-nav .section-nav a .dot{
+        width:52px !important;
+        height:40px !important;
+      }
+    }
+    /* On the landing page, folders sit beneath the identity rather than in a side rail. */
+    .browser-mode:has(#home.active-pane) .shell{
+      display:block !important;
+      position:relative !important;
+    }
+    .browser-mode:has(#home.active-pane) .side-nav{
+      position:absolute !important;
+      top:192px !important;
+      left:0 !important;
+      right:0 !important;
+      margin:0 auto !important;
+      padding:0 !important;
+    }
+    .browser-mode:has(#home.active-pane) .page{
+      width:100% !important;
+      margin:0 auto !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane{
+      display:block !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane .about-sticky{
+      margin-top:143px !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane,
+    .browser-mode:has(#home.active-pane) #home.active-pane .about-sticky,
+    .browser-mode:has(#home.active-pane) #home.active-pane .hero-type,
+    .browser-mode:has(#home.active-pane) #home.active-pane .intro{
+      text-align:center !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane .intro{
+      margin-inline:auto !important;
+    }
+    /* Final experience treatment: airy rows, small marks, readable role/company lockups. */
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item){
+      position:relative !important;
+      display:block !important;
+      padding:28px 0 !important;
+      border-top:1px solid var(--line) !important;
+      border-radius:0 !important;
+      background:transparent !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item)::before,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item)::after{
+      display:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .item-top{
+      display:grid !important;
+      grid-template-columns:minmax(0,1fr) auto !important;
+      align-items:start !important;
+      gap:20px !important;
+      margin:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading{
+      display:grid !important;
+      grid-template-columns:82px minmax(0,1fr) !important;
+      align-items:center !important;
+      column-gap:18px !important;
+      margin:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading .work-logo,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading .bma-full-logo{
+      grid-column:1 !important;
+      width:72px !important;
+      max-width:72px !important;
+      height:64px !important;
+      margin:0 !important;
+      object-fit:contain !important;
+      object-position:center !important;
+      transform:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading h3,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .experience-company{
+      grid-column:2 !important;
+      margin:0 !important;
+      line-height:1.28 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading h3{
+      font-size:22px !important;
+      font-weight:500 !important;
+      color:var(--text) !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .experience-company{
+      margin-top:4px !important;
+      color:var(--muted) !important;
+      font-size:17px !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .date{
+      grid-column:2 !important;
+      margin:14px 0 0 !important;
+      padding:7px 14px !important;
+      border:1px solid #b9f0d9 !important;
+      border-radius:999px !important;
+      color:#17ae75 !important;
+      background:#effff8 !important;
+      font-size:14px !important;
+      white-space:nowrap !important;
+      justify-self:end !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-summary,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-links-static{
+      margin:14px 0 0 100px !important;
+      max-width:72ch !important;
+      color:var(--muted) !important;
+      font-size:16px !important;
+      line-height:1.5 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-links-static{
+      margin-top:10px !important;
+    }
+    @media(max-width:600px){
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .item-top{
+        grid-template-columns:1fr !important;
+      }
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .date{
+        grid-column:1 !important;
+        justify-self:start !important;
+        margin:10px 0 0 100px !important;
+      }
+    }
+    /* Rewind keeps its existing card dimensions while showing more of the artwork. */
+    .browser-mode #honors #hackathon-items img[src*="rewind-hacksc"]{
+      object-fit:contain !important;
+      object-position:center 60% !important;
+      transform:scale(.92) !important;
+      padding:0 !important;
+      background:#111 !important;
+    }
+    /* Experience rows: text-first layout matching the reference, with no logo collisions. */
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item){
+      min-height:132px !important;
+      padding:24px 0 !important;
+      overflow:visible !important;
+      border-top:1px solid var(--line) !important;
+      border-bottom:0 !important;
+      background:transparent !important;
+      box-shadow:none !important;
+      transform:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .item-top{
+      display:grid !important;
+      grid-template-columns:minmax(0,1fr) max-content !important;
+      align-items:start !important;
+      gap:24px !important;
+      min-width:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading{
+      display:block !important;
+      min-width:0 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading .work-logo,
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading .bma-full-logo{
+      display:none !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .work-heading h3{
+      display:block !important;
+      margin:0 !important;
+      max-width:100% !important;
+      font-size:22px !important;
+      line-height:1.25 !important;
+      font-weight:500 !important;
+      letter-spacing:-.015em !important;
+      overflow-wrap:anywhere !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .experience-company{
+      display:block !important;
+      margin:4px 0 0 !important;
+      font-size:17px !important;
+      line-height:1.3 !important;
+      color:var(--muted) !important;
+      overflow-wrap:anywhere !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .date{
+      grid-column:2 !important;
+      grid-row:1 !important;
+      align-self:start !important;
+      margin:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      border-radius:0 !important;
+      background:transparent !important;
+      color:var(--muted) !important;
+      font-size:16px !important;
+      line-height:1.35 !important;
+      white-space:nowrap !important;
+      justify-self:end !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-summary{
+      left:0 !important;
+      right:190px !important;
+      top:82px !important;
+      margin:0 !important;
+      font-size:15px !important;
+      line-height:1.45 !important;
+    }
+    .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-links-static{
+      left:0 !important;
+      top:112px !important;
+      margin:0 !important;
+    }
+    @media(max-width:650px){
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .item-top{
+        grid-template-columns:1fr !important;
+        gap:8px !important;
+      }
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) .date{
+        grid-column:1 !important;
+        justify-self:start !important;
+      }
+      .browser-mode #work .experience-grid > .logo-work-item:not(.consulting-work-item) > .experience-summary{
+        right:0 !important;
+        top:106px !important;
+      }
+    }
+    /* Editorial profile header and introduction for the experience folder. */
+    .browser-mode #work.active-pane{
+      width:min(100%,1050px) !important;
+      max-width:1050px !important;
+      margin-inline:auto !important;
+      padding:clamp(86px,9vw,132px) 0 120px !important;
+    }
+    .browser-mode #work.active-pane > .experience-profile{
+      display:flex !important;
+      align-items:center !important;
+      gap:26px !important;
+      margin:0 0 58px !important;
+      max-width:760px !important;
+    }
+    .browser-mode #work .experience-profile-photo{
+      width:112px !important;
+      height:112px !important;
+      flex:0 0 112px !important;
+      border-radius:50% !important;
+      object-fit:cover !important;
+      object-position:center 42% !important;
+      border:0 !important;
+      background:transparent !important;
+    }
+    .browser-mode #work .experience-profile-copy h1{
+      margin:0 !important;
+      color:var(--text) !important;
+      font-size:clamp(34px,4vw,48px) !important;
+      line-height:1.05 !important;
+      letter-spacing:-.045em !important;
+      font-weight:650 !important;
+    }
+    .browser-mode #work .experience-profile-subtitle{
+      margin:8px 0 12px !important;
+      color:var(--muted) !important;
+      font-size:clamp(18px,2.2vw,24px) !important;
+      line-height:1.3 !important;
+    }
+    .browser-mode #work .experience-profile-site{
+      display:inline-flex !important;
+      padding:7px 14px !important;
+      border-radius:999px !important;
+      background:color-mix(in srgb,var(--muted) 11%,transparent) !important;
+      color:var(--muted) !important;
+      font-size:15px !important;
+      text-decoration:none !important;
+    }
+    .browser-mode #work .experience-about{
+      margin:0 0 74px !important;
+      max-width:860px !important;
+    }
+    .browser-mode #work .experience-about h2{
+      margin:0 0 22px !important;
+      color:var(--muted) !important;
+      font-size:17px !important;
+      line-height:1.2 !important;
+      font-weight:500 !important;
+      letter-spacing:0 !important;
+      text-transform:none !important;
+    }
+    .browser-mode #work .experience-about p{
+      margin:0 !important;
+      max-width:820px !important;
+      color:var(--text) !important;
+      font-size:clamp(23px,2.5vw,30px) !important;
+      line-height:1.35 !important;
+      letter-spacing:-.025em !important;
+    }
+    .browser-mode #work.active-pane > h2:not(#experience-about-title){
+      margin:0 0 24px !important;
+      color:var(--muted) !important;
+      font-size:17px !important;
+      line-height:1.2 !important;
+      font-weight:500 !important;
+      letter-spacing:0 !important;
+      text-transform:none !important;
+    }
+    @media(max-width:650px){
+      .browser-mode #work.active-pane{padding:92px 20px 84px !important;}
+      .browser-mode #work.active-pane > .experience-profile{align-items:flex-start !important;gap:16px !important;margin-bottom:46px !important;}
+      .browser-mode #work .experience-profile-photo{width:76px !important;height:76px !important;flex-basis:76px !important;}
+      .browser-mode #work .experience-profile-subtitle{font-size:17px !important;}
+      .browser-mode #work .experience-about{margin-bottom:54px !important;}
+      .browser-mode #work .experience-about p{font-size:22px !important;}
+    }
+    /* Final Experience route: a single editorial résumé flow. */
+    .browser-mode #work.active-pane{
+      box-sizing:border-box !important;
+      width:min(960px,calc(100vw - 64px)) !important;
+      max-width:960px !important;
+      margin:0 auto !important;
+      padding:96px 0 100px !important;
+    }
+    .browser-mode #work.active-pane .experience-profile{
+      display:flex !important;
+      align-items:center !important;
+      gap:24px !important;
+      margin:0 0 78px !important;
+      max-width:760px !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-photo{
+      width:104px !important;
+      height:104px !important;
+      flex:0 0 104px !important;
+      border-radius:50% !important;
+      object-fit:cover !important;
+      object-position:center 42% !important;
+      border:0 !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-copy h1{
+      margin:0 !important;
+      font-size:clamp(36px,4.2vw,52px) !important;
+      line-height:1.05 !important;
+      letter-spacing:-.05em !important;
+      font-weight:650 !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-subtitle{
+      margin:8px 0 13px !important;
+      color:var(--muted) !important;
+      font-size:clamp(18px,2.2vw,24px) !important;
+      line-height:1.3 !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-site{
+      display:inline-flex !important;
+      padding:7px 14px !important;
+      border-radius:999px !important;
+      background:color-mix(in srgb,var(--muted) 11%,transparent) !important;
+      color:var(--muted) !important;
+      font-size:15px !important;
+      text-decoration:none !important;
+    }
+    .browser-mode #work.active-pane .experience-about{
+      margin:0 0 78px !important;
+      max-width:860px !important;
+    }
+    .browser-mode #work.active-pane .experience-about h2,
+    .browser-mode #work.active-pane .section-label{
+      margin:0 0 30px !important;
+      color:var(--muted) !important;
+      font-size:18px !important;
+      line-height:1.3 !important;
+      font-weight:550 !important;
+    }
+    .browser-mode #work.active-pane .experience-about p{
+      margin:0 !important;
+      max-width:820px !important;
+      color:var(--text) !important;
+      font-size:clamp(24px,2.7vw,30px) !important;
+      line-height:1.38 !important;
+      letter-spacing:-.025em !important;
+    }
+    .browser-mode #work.active-pane .work-experience{
+      display:block !important;
+      width:100% !important;
+      margin:0 !important;
+    }
+    .browser-mode #work.active-pane .work-experience > .section-label{
+      margin-bottom:18px !important;
+    }
+    .browser-mode #work.active-pane .experience-list{
+      display:block !important;
+      width:100% !important;
+      margin:0 !important;
+    }
+    .browser-mode #work.active-pane .experience-item{
+      display:grid !important;
+      grid-template-columns:180px minmax(0,1fr) !important;
+      column-gap:40px !important;
+      align-items:start !important;
+      width:100% !important;
+      box-sizing:border-box !important;
+      padding:28px 0 !important;
+      border-top:1px solid rgba(40,35,35,.12) !important;
+      background:transparent !important;
+      min-height:0 !important;
+      position:static !important;
+      transform:none !important;
+      overflow:visible !important;
+    }
+    .browser-mode #work.active-pane .experience-item:last-child{
+      border-bottom:1px solid rgba(40,35,35,.12) !important;
+    }
+    .browser-mode #work.active-pane .experience-date{
+      min-width:0 !important;
+      color:var(--muted) !important;
+      font-size:18px !important;
+      line-height:1.5 !important;
+      white-space:normal !important;
+    }
+    .browser-mode #work.active-pane .experience-content{
+      min-width:0 !important;
+    }
+    .browser-mode #work.active-pane .experience-content h3{
+      margin:0 !important;
+      color:var(--text) !important;
+      font-size:25px !important;
+      line-height:1.25 !important;
+      letter-spacing:-.02em !important;
+      font-weight:600 !important;
+      overflow-wrap:anywhere !important;
+    }
+    .browser-mode #work.active-pane .experience-company{
+      margin:4px 0 0 !important;
+      color:var(--muted) !important;
+      font-size:19px !important;
+      line-height:1.45 !important;
+      overflow-wrap:anywhere !important;
+    }
+    .browser-mode #work.active-pane .experience-content ul{
+      margin:14px 0 0 !important;
+      padding-left:20px !important;
+      max-width:650px !important;
+      color:var(--muted) !important;
+      font-size:17px !important;
+      line-height:1.6 !important;
+    }
+    .browser-mode #work.active-pane .experience-content li{padding-left:4px !important;}
+    .browser-mode #work.active-pane .experience-item:hover .experience-content h3,
+    .browser-mode #work.active-pane .experience-item:focus-within .experience-content h3{color:var(--accent) !important;}
+    @media(max-width:700px){
+      .browser-mode #work.active-pane{width:calc(100vw - 40px) !important;padding:88px 0 76px !important;}
+      .browser-mode #work.active-pane .experience-profile{align-items:flex-start !important;gap:16px !important;margin-bottom:58px !important;}
+      .browser-mode #work.active-pane .experience-profile-photo{width:76px !important;height:76px !important;flex-basis:76px !important;}
+      .browser-mode #work.active-pane .experience-profile-subtitle{font-size:17px !important;}
+      .browser-mode #work.active-pane .experience-about{margin-bottom:58px !important;}
+      .browser-mode #work.active-pane .experience-about p{font-size:22px !important;}
+      .browser-mode #work.active-pane .experience-item{grid-template-columns:1fr !important;row-gap:8px !important;padding:24px 0 !important;}
+      .browser-mode #work.active-pane .experience-date{font-size:17px !important;}
+      .browser-mode #work.active-pane .experience-content h3{font-size:23px !important;}
+      .browser-mode #work.active-pane .experience-company{font-size:18px !important;}
+      .browser-mode #work.active-pane .experience-content ul{font-size:16px !important;line-height:1.55 !important;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .browser-mode #work.active-pane .experience-item:hover .experience-content h3,
+      .browser-mode #work.active-pane .experience-item:focus-within .experience-content h3{transition:none !important;}
+    }
+    /* Compact editorial refinement for Experience. */
+    .browser-mode:has(#work.active-pane) .side-nav{
+      position:relative !important;
+      top:auto !important;
+      left:auto !important;
+      right:auto !important;
+      width:100% !important;
+      margin:0 auto !important;
+      padding:18px 24px 0 !important;
+      transform:none !important;
+    }
+    .browser-mode:has(#work.active-pane) #work.active-pane{
+      width:100% !important;
+      max-width:680px !important;
+      margin:0 auto !important;
+      padding:48px 24px 100px !important;
+    }
+    .browser-mode #work.active-pane .experience-profile{
+      gap:18px !important;
+      margin:0 0 64px !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-photo{
+      width:72px !important;
+      height:72px !important;
+      flex-basis:72px !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-copy h1{
+      font-size:40px !important;
+      line-height:1.05 !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-subtitle{
+      margin-top:5px !important;
+      font-size:18px !important;
+      line-height:1.4 !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-site{
+      margin-top:9px !important;
+      padding:5px 13px !important;
+      border:0 !important;
+      background:rgba(30,25,25,.06) !important;
+      color:var(--muted) !important;
+      font-size:14px !important;
+    }
+    .browser-mode #work.active-pane .experience-profile-site:focus-visible{
+      outline:2px solid #0878d1 !important;
+      outline-offset:3px !important;
+    }
+    .browser-mode #work.active-pane .experience-about{
+      margin:0 0 60px !important;
+    }
+    .browser-mode #work.active-pane .experience-about h2,
+    .browser-mode #work.active-pane .section-label{
+      margin:0 0 24px !important;
+      font-size:16px !important;
+      line-height:1.4 !important;
+    }
+    .browser-mode #work.active-pane .experience-about p{
+      max-width:640px !important;
+      font-size:20px !important;
+      line-height:1.55 !important;
+      letter-spacing:-.015em !important;
+    }
+    .browser-mode #work.active-pane .experience-list{
+      display:flex !important;
+      flex-direction:column !important;
+      gap:30px !important;
+    }
+    .browser-mode #work.active-pane .experience-item,
+    .browser-mode #work.active-pane .experience-item:last-child{
+      display:flex !important;
+      align-items:flex-start !important;
+      gap:28px !important;
+      padding:0 !important;
+      border:0 !important;
+      min-height:0 !important;
+      position:static !important;
+      background:transparent !important;
+    }
+    .browser-mode #work.active-pane .experience-date{
+      width:150px !important;
+      flex:0 0 150px !important;
+      padding-top:2px !important;
+      font-size:14px !important;
+      line-height:1.5 !important;
+      white-space:nowrap !important;
+      font-variant-numeric:tabular-nums !important;
+    }
+    .browser-mode #work.active-pane .experience-content{
+      min-width:0 !important;
+      flex:1 1 auto !important;
+    }
+    .browser-mode #work.active-pane .experience-title{
+      margin:0 !important;
+      font-size:17px !important;
+      line-height:1.45 !important;
+      font-weight:600 !important;
+      color:var(--text) !important;
+      overflow-wrap:anywhere !important;
+    }
+    .browser-mode #work.active-pane .experience-company-inline{
+      font-weight:500 !important;
+      color:var(--muted) !important;
+    }
+    .browser-mode #work.active-pane .experience-bullets{
+      margin:8px 0 0 !important;
+      padding-left:18px !important;
+      max-width:650px !important;
+      color:var(--muted) !important;
+      font-size:14px !important;
+      line-height:1.55 !important;
+    }
+    .browser-mode #work.active-pane .experience-bullets li{margin-top:4px !important;padding-left:2px !important;}
+    .browser-mode #work.active-pane .experience-item:hover .experience-title,
+    .browser-mode #work.active-pane .experience-item:focus-within .experience-title{color:var(--text) !important;}
+    /* Consulting folder: independent visual work, never rendered inside Experience. */
+    .browser-mode #consulting.active-pane{
+      width:min(1040px,calc(100vw - 64px)) !important;
+      margin:0 auto !important;
+      padding:92px 0 100px !important;
+    }
+    .browser-mode #consulting .consulting-page-header h2{
+      margin:0 0 34px !important;
+      font-size:clamp(38px,5vw,62px) !important;
+      line-height:1 !important;
+      font-weight:600 !important;
+      letter-spacing:-.05em !important;
+    }
+    .browser-mode #consulting .section-label{margin:0 0 10px !important;color:var(--muted) !important;font-size:16px !important;}
+    .browser-mode #consulting .consulting-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:42px 24px !important;}
+    .browser-mode #consulting .consulting-card{min-width:0 !important;}
+    .browser-mode #consulting .consulting-card > a:first-child{display:block !important;aspect-ratio:4/3 !important;overflow:hidden !important;background:transparent !important;}
+    .browser-mode #consulting .consulting-card > a:first-child img{width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;}
+    .browser-mode #consulting .consulting-card h3{margin:14px 0 5px !important;font-size:19px !important;font-weight:600 !important;}
+    .browser-mode #consulting .consulting-card p{margin:0 !important;color:var(--muted) !important;font-size:14px !important;line-height:1.5 !important;}
+    .browser-mode #consulting .consulting-card-link{display:inline-block !important;margin-top:9px !important;color:var(--text) !important;font-size:13px !important;text-decoration:underline !important;}
+    @media(max-width:700px){
+      .browser-mode:has(#work.active-pane) .side-nav{padding-inline:20px !important;}
+      .browser-mode:has(#work.active-pane) #work.active-pane{width:calc(100vw - 40px) !important;padding:38px 0 76px !important;}
+      .browser-mode #work.active-pane .experience-profile{margin-bottom:50px !important;}
+      .browser-mode #work.active-pane .experience-profile-photo{width:64px !important;height:64px !important;flex-basis:64px !important;}
+      .browser-mode #work.active-pane .experience-profile-copy h1{font-size:32px !important;}
+      .browser-mode #work.active-pane .experience-profile-subtitle{font-size:16px !important;}
+      .browser-mode #work.active-pane .experience-about p{font-size:18px !important;}
+      .browser-mode #work.active-pane .experience-item{flex-direction:column !important;gap:5px !important;}
+      .browser-mode #work.active-pane .experience-date{width:auto !important;flex-basis:auto !important;white-space:normal !important;font-size:13px !important;}
+      .browser-mode #work.active-pane .experience-title{font-size:16px !important;}
+      .browser-mode #work.active-pane .experience-bullets li{font-size:14px !important;}
+      .browser-mode #consulting.active-pane{width:calc(100vw - 40px) !important;padding:72px 0 80px !important;}
+      .browser-mode #consulting .consulting-grid{grid-template-columns:1fr !important;gap:34px !important;}
+    }
+    /* Give the landing page a centered stage instead of a top-heavy stack. */
+    .browser-mode:has(#home.active-pane) #home.active-pane{
+      min-height:calc(100vh - 24px) !important;
+      box-sizing:border-box !important;
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      justify-content:center !important;
+      padding:150px 24px 90px !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane > h1,
+    .browser-mode:has(#home.active-pane) #home.active-pane > .hero-type,
+    .browser-mode:has(#home.active-pane) #home.active-pane > .about-sticky{width:min(760px,100%) !important;}
+    .browser-mode:has(#home.active-pane) #home.active-pane > h1{margin-top:0 !important;}
+    @media(max-width:700px){
+      .browser-mode:has(#home.active-pane) #home.active-pane{padding:128px 20px 70px !important;}
+    }
+    /* About content now lives beneath the Experience profile. */
+    .browser-mode #work.active-pane .profile-about{
+      margin-top:48px !important;
+      margin-bottom:72px !important;
+    }
+    .browser-mode #work.active-pane .profile-about h2{
+      margin:0 0 18px !important;
+      font-size:17px !important;
+      line-height:1.4 !important;
+      font-weight:600 !important;
+      color:var(--text) !important;
+    }
+    .browser-mode #work.active-pane .profile-about-copy .intro{
+      margin:0 !important;
+      max-width:680px !important;
+      font-size:18px !important;
+      line-height:1.55 !important;
+      color:var(--text) !important;
+    }
+    .browser-mode #work.active-pane .about-photo-grid{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:12px !important;
+      margin-top:30px !important;
+    }
+    .browser-mode #work.active-pane .about-photo-grid figure{margin:0 !important;min-width:0 !important;}
+    .browser-mode #work.active-pane .about-photo-grid img{
+      width:100% !important;
+      aspect-ratio:4/3 !important;
+      height:auto !important;
+      object-fit:cover !important;
+      border-radius:8px !important;
+      display:block !important;
+    }
+    .browser-mode #work.active-pane .about-photo-grid figcaption{
+      margin-top:7px !important;
+      color:var(--muted) !important;
+      font-size:12px !important;
+      line-height:1.35 !important;
+    }
+    .browser-mode #work.active-pane .profile-contact-row{
+      display:flex !important;
+      align-items:center !important;
+      justify-content:space-between !important;
+      gap:24px !important;
+      margin-top:24px !important;
+      font-size:15px !important;
+      color:var(--muted) !important;
+    }
+    .browser-mode #work.active-pane .profile-contact-row p{margin:0 !important;}
+    .browser-mode #work.active-pane .profile-contact-row a{color:inherit !important;text-underline-offset:3px !important;}
+    .browser-mode #work.active-pane .organizations-section{
+      width:100% !important;
+      margin:96px 0 120px !important;
+    }
+    .browser-mode #work.active-pane .organizations-section > h3{
+      margin:0 0 30px !important;
+      font-size:24px !important;
+      line-height:1.2 !important;
+      font-weight:600 !important;
+    }
+    .browser-mode #work.active-pane .organizations-section .organization-grid{
+      display:grid !important;
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      gap:48px 28px !important;
+      width:100% !important;
+    }
+    .browser-mode #work.active-pane .organizations-section .organization-card{min-width:0 !important;align-self:start !important;}
+    .browser-mode #work.active-pane .organizations-section .organization-card h4{font-size:18px !important;}
+    .browser-mode #consulting .consulting-card h3 a{color:inherit !important;text-decoration:none !important;}
+    .browser-mode #consulting .consulting-card h3 a:hover{text-decoration:underline !important;text-underline-offset:3px !important;}
+    .browser-mode #work.active-pane .productsc-project-link{display:flex !important;align-items:center !important;gap:8px !important;}
+    .browser-mode #work.active-pane .productsc-project-mark{width:20px !important;height:20px !important;object-fit:contain !important;}
+    @media(max-width:600px){
+      .browser-mode #work.active-pane .about-photo-grid{grid-template-columns:1fr !important;}
+      .browser-mode #work.active-pane .profile-contact-row{align-items:flex-start !important;flex-direction:column !important;gap:8px !important;}
+      .browser-mode #work.active-pane .organizations-section .organization-grid{grid-template-columns:1fr !important;row-gap:40px !important;}
+    }
+
+
+    /* Landing-page folder placement: the same navigation moves into the hero
+       beneath the animated identity line. Inner-page navigation is untouched. */
+    .browser-mode:has(#home.active-pane) #home.active-pane > .hero-type{
+      margin-bottom:20px !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane > .side-nav{
+      position:static !important;
+      inset:auto !important;
+      width:min(820px,100%) !important;
+      margin:0 auto !important;
+      padding:0 !important;
+      transform:none !important;
+      display:block !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane > .side-nav .nav-brand{
+      display:none !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane > .side-nav .section-nav{
+      display:flex !important;
+      flex-direction:row !important;
+      flex-wrap:nowrap !important;
+      align-items:flex-start !important;
+      justify-content:center !important;
+      gap:clamp(16px,3vw,42px) !important;
+      width:100% !important;
+      margin:0 auto !important;
+      overflow:visible !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane > .side-nav .section-nav a{
+      flex:0 0 auto !important;
+      width:auto !important;
+      min-height:0 !important;
+      padding:0 !important;
+      gap:5px !important;
+      text-align:center !important;
+    }
+    .browser-mode:has(#home.active-pane) #home.active-pane > .side-nav .section-nav a .dot{
+      width:62px !important;
+      height:48px !important;
+    }
+    @media(max-width:700px){
+      .browser-mode:has(#home.active-pane) #home.active-pane > .side-nav{
+        width:100% !important;
+      }
+      .browser-mode:has(#home.active-pane) #home.active-pane > .side-nav .section-nav{
+        justify-content:flex-start !important;
+        gap:10px !important;
+        overflow-x:auto !important;
+        padding:0 2px 5px !important;
+      }
+      .browser-mode:has(#home.active-pane) #home.active-pane > .side-nav .section-nav a .dot{
+        width:52px !important;
+        height:40px !important;
+      }
+    }
   </style>
 </head>
 <body class="browser-mode">
@@ -5262,11 +8341,11 @@
   <div class="shell">
     <aside class="side-nav" aria-label="Section navigation">
       <nav class="section-nav">
-        <a class="nav-link" href="#about" data-section="about"><span class="dot" aria-hidden="true"></span><span>about</span></a>
         <a class="nav-link" href="#work" data-section="work"><span class="dot" aria-hidden="true"></span><span>experience</span></a>
+        <a class="nav-link" href="#consulting" data-section="consulting"><span class="dot" aria-hidden="true"></span><span>consulting</span></a>
         <a class="nav-link" href="#projects" data-section="projects"><span class="dot" aria-hidden="true"></span><span>projects</span></a>
         <a class="nav-link" href="#intellectual-property" data-section="intellectual-property"><span class="dot" aria-hidden="true"></span><span>patents</span></a>
-        <a class="nav-link" href="#hackathons" data-section="hackathons"><span class="dot" aria-hidden="true"></span><span>honors</span></a>
+        <a class="nav-link" href="#honors" data-section="honors"><span class="dot" aria-hidden="true"></span><span>honors</span></a>
       </nav>
     </aside>
 
@@ -5291,19 +8370,12 @@
               <figcaption>Aeris at the IYA Venture Showcase</figcaption>
             </figure>
             <figure>
-              <img src="about-fight-on.jpeg" alt="Reem Khan and friends at a USC football game">
-              <figcaption>Fight On</figcaption>
-            </figure>
-            <figure>
               <img src="about-reem-usc.jpeg" alt="Reem Khan and USC classmates at convocation">
               <figcaption>USC Convocation</figcaption>
             </figure>
             <figure>
               <img src="about-reem-usc-group.jpeg" alt="Reem Khan with Iovine and Young Academy classmates">
               <figcaption>Cohort 12 :)</figcaption>
-            </figure>
-            <figure>
-              <figcaption>Built by Cohort 12</figcaption>
             </figure>
           </div>
           <div class="about-contact">
@@ -5315,41 +8387,40 @@
             <div class="organization-grid">
               <article class="organization-card">
                 <div class="organization-media-row">
-                  <img src="maia-funding-1.jpeg" alt="Marshall AI Association biotechnology team at the Echo funding presentation">
-                  <img src="maia-funding-2.jpeg" alt="Echo biotechnology project team receiving one thousand dollars in funding">
-                  <img src="maia-funding-3.jpeg" alt="Marshall AI Association members and Echo project team at the funding presentation">
+                  <img src="maia-funding-2.jpeg" loading="lazy" alt="Echo biotechnology project team receiving one thousand dollars in funding">
                 </div>
                 <div class="organization-title-lockup">
                   <img class="organization-mark maia-mark" src="maia-logo.png" alt="">
                   <h4>Marshall AI Association</h4>
                 </div>
                 <p class="organization-role">VP of Communications · previously Biotechnology Project Member</p>
-                <p>Helped develop Echo, a wearable EMG band that translates ASL muscle activity into voice output, and secured $1,000 in project funding before moving into communications leadership.</p>
+                <p>Co-developed Echo’s wearable EMG prototype and helped secure $1,000 in project funding before moving into communications leadership.</p>
               </article>
 
               <article class="organization-card">
                 <div class="organization-media-row">
-                  <a href="https://www.trojanstreetaid.org/" target="_blank" rel="noopener noreferrer"><img src="tsa-service-1.png" alt="Trojan Street Aid volunteers assembling supplies"></a>
-                  <img src="tsa-service-2.png" alt="Trojan Street Aid volunteers at USC">
-                  <img src="tsa-service-3.png" alt="Trojan Street Aid volunteers organizing community supplies">
+                  <a href="https://www.trojanstreetaid.org/" target="_blank" rel="noopener noreferrer"><img src="tsa-service-1.webp" loading="lazy" alt="Trojan Street Aid volunteers assembling supplies"></a>
                 </div>
                 <div class="organization-title-lockup">
                   <img class="organization-mark" src="tsa-logo.png" alt="">
                   <h4>Trojan Street Aid</h4>
                 </div>
                 <p class="organization-role">Volunteer</p>
-                <p>Community-centered service rooted in care, dignity, and showing up for people beyond the classroom.</p>
+                <p>Organize supplies and support community-centered service rooted in care and dignity.</p>
                 <div class="links"><a href="https://www.trojanstreetaid.org/" target="_blank" rel="noopener noreferrer">website</a></div>
               </article>
 
               <article class="organization-card">
+                <div class="organization-media-row">
+                  <img src="productsc-community.jpeg" loading="lazy" alt="ProductSC student community gathering">
+                </div>
                 <div class="organization-title-lockup">
                   <a href="#runway"><img class="organization-mark productsc-mark" src="productsc-logo.jpeg" alt="ProductSC logo"></a>
                   <h4>ProductSC</h4>
                 </div>
                 <p class="organization-role">USC’s premier product management student organization</p>
-                <p>Building product skills through collaborative projects, including the Intuit Runway financial-simulation experience.</p>
-                <div class="links"><a href="#runway">view project with Intuit</a></div>
+                <p>Designed the Intuit Runway financial-simulation experience through a collaborative product sprint.</p>
+                <div class="links productsc-project-link"><img class="productsc-project-mark" src="productsc-logo.jpeg" alt="ProductSC logo"><a href="#runway">view project with Intuit</a></div>
               </article>
 
               <article class="organization-card">
@@ -5358,33 +8429,36 @@
                   <h4>Saplings · Reconstruct</h4>
                 </div>
                 <p class="organization-role">Sustainability incubator · Founder and product builder</p>
-                <p>Developed Reconstruct, a community platform that gives leftover construction materials a second life by helping people share and find reusable supplies—reducing waste, lowering costs, and supporting more sustainable building.</p>
+                <p>Founded and prototyped Reconstruct, a community platform for sharing reusable construction materials.</p>
                 <div class="organization-media-row saplings-media-row">
-                  <img src="reconstruct-site-2.jpeg" alt="Residential construction site with framed buildings">
-                  <img src="reconstruct-site-3.jpeg" alt="Timber framing photographed during construction">
+                  <img src="reconstruct-site-2.webp" loading="lazy" alt="Residential construction site with framed buildings">
                 </div>
               </article>
 
               <article class="organization-card rare-card">
                 <h4>Rare Podcast</h4>
                 <p class="organization-role">Co-hosting conversations around creativity, innovation, and student stories</p>
-                <p>A storytelling space where I explore ideas, interview thoughtful people, and turn creative journeys into conversations.</p>
+                <p>Co-host and produce interviews that turn creative and entrepreneurial journeys into concise conversations.</p>
                 <div class="rare-episodes" aria-label="Rare Podcast episodes">
-                  <a href="https://creators.spotify.com/pod/profile/therarepod/episodes/Finding-Balanceness-with-Heather-Miller-Navigating-lifes-ups-and-downs-as-a-successful-entrepreneur-e2tdhen/a-abnn24n" target="_blank" rel="noopener noreferrer"><img src="rare-episode-1.png" alt="Rare Podcast episode with Heather Miller"></a>
-                  <a href="https://creators.spotify.com/pod/profile/therarepod/episodes/Taking-the-Leap-with-Miki-S-Y-The-Risks--Rewards---Realities-of-Being-a-Young-Entrepreneur-e2vecu3/a-abq7lbu" target="_blank" rel="noopener noreferrer"><img src="rare-episode-2.png" alt="Rare Podcast episode with Miki S-Y"></a>
-                  <a href="https://creators.spotify.com/pod/profile/therarepod/episodes/The-Art-of-Resilience-with-Ms--Kiran-Ranmal--Embracing-Change--Advocating-for-Yourself--and-Thriving-in-Uncertainty-e2vvfrt/a-abqvroj" target="_blank" rel="noopener noreferrer"><img src="rare-episode-3.png" alt="Rare Podcast episode with Kiran Ranmal"></a>
+                  <a href="https://creators.spotify.com/pod/profile/therarepod/episodes/Finding-Balanceness-with-Heather-Miller-Navigating-lifes-ups-and-downs-as-a-successful-entrepreneur-e2tdhen/a-abnn24n" target="_blank" rel="noopener noreferrer"><img src="rare-episode-1.webp" loading="lazy" alt="Rare Podcast episode with Heather Miller"></a>
+                  <a href="https://creators.spotify.com/pod/profile/therarepod/episodes/Taking-the-Leap-with-Miki-S-Y-The-Risks--Rewards---Realities-of-Being-a-Young-Entrepreneur-e2vecu3/a-abq7lbu" target="_blank" rel="noopener noreferrer"><img src="rare-episode-2.webp" loading="lazy" alt="Rare Podcast episode with Miki S-Y"></a>
+                  <a href="https://creators.spotify.com/pod/profile/therarepod/episodes/The-Art-of-Resilience-with-Ms--Kiran-Ranmal--Embracing-Change--Advocating-for-Yourself--and-Thriving-in-Uncertainty-e2vvfrt/a-abqvroj" target="_blank" rel="noopener noreferrer"><img src="rare-episode-3.webp" loading="lazy" alt="Rare Podcast episode with Kiran Ranmal"></a>
                 </div>
               </article>
 
               <article class="organization-card rare-card">
                 <div class="organization-media-row organization-media-row-wide">
-                  <img src="bloom-1.png" alt="Bloom community members displaying student-designed tote bags">
-                  <img src="bloom-2.png" alt="Students gathering at a Bloom community event">
-                  <img src="bloom-5.png" alt="Bloom affirmation wall filled with supportive messages">
+                  <div class="bloom-gallery" aria-label="Bloom community and mentorship photos">
+                    <img src="bloom-1.webp" loading="lazy" alt="Bloom community members displaying student-designed tote bags">
+                    <img src="bloom-2.png" loading="lazy" alt="Bloom volunteers at a student community event">
+                    <img src="bloom-3.png" loading="lazy" alt="Bloom community members posing with a decorated frame">
+                    <img src="bloom-4.png" loading="lazy" alt="Bloom student community event outdoors">
+                    <img src="bloom-5.png" loading="lazy" alt="Bloom community members at a mentorship event">
+                  </div>
                 </div>
                 <h4>Bloom</h4>
                 <p class="organization-role">Student-led impact and mentorship</p>
-                <p>A community I helped grow around mentorship, leadership, and helping students feel supported while becoming who they are.</p>
+                <p>Helped grow a student community centered on mentorship, leadership, and belonging.</p>
               </article>
             </div>
           </section>
@@ -5392,6 +8466,18 @@
       </section>
 
       <section id="work">
+        <header class="experience-profile" aria-label="Reem Khan profile">
+          <img class="experience-profile-photo" src="about-reem-usc.jpeg" alt="Reem Khan at USC commencement">
+          <div class="experience-profile-copy">
+            <h1>Reem Khan</h1>
+            <p class="experience-profile-subtitle">Product Strategist, Inventor, and Creative Technologist</p>
+            <a class="experience-profile-site" href="#about">reem-khan.com</a>
+          </div>
+        </header>
+        <section class="experience-about" aria-labelledby="experience-about-title">
+          <h2 id="experience-about-title">About</h2>
+          <p>I build at the intersection of product strategy, emerging technology, and human-centered design. My work spans AI, spatial computing, health innovation, and early-stage ventures, with a focus on turning ambitious ideas into thoughtful, useful products.</p>
+        </section>
         <h2>experience</h2>
 
         <article class="item logo-work-item" data-company-label="Blue Modern Advisory">
@@ -5400,7 +8486,7 @@
               <img class="work-logo logo-wide bma-full-logo" src="blue-modern-advisory-full-logo.png" alt="Blue Modern Advisory logo">
               <h3>Product Manager</h3>
             </div>
-            <p class="date">Jan 2026–Jun 2026</p>
+            <p class="date">Jan 2026–Present</p>
           </div>
           <details>
             <summary>process</summary>
@@ -5435,11 +8521,11 @@
         </article>
 
         <article class="item project-item visual-item brand-logo-project" id="aeris">
-          <a href="https://aeris-web-seven.vercel.app/" target="_blank" rel="noopener noreferrer"><img class="entry-media" src="aeris-logo.png" alt="Aeris logo"></a>
+          <a href="https://aeris-web-seven.vercel.app/" target="_blank" rel="noopener noreferrer"><img class="entry-media" src="aeris-device.png" alt="Aeris prototype device for early Parkinson's screening"></a>
           <div>
             <div class="item-top">
               <div>
-                <h3>Aeris</h3>
+                <h3 class="project-logo-title"><img src="aeris-logo.png" alt="Aeris"></h3>
                 <p class="role">Founder</p>
               </div>
               <p class="date">Jan 2026–Present</p>
@@ -5461,11 +8547,11 @@
         </article>
 
         <article class="item project-item visual-item brand-logo-project" id="neurochron">
-          <a href="https://viterbischool.usc.edu/news/2026/05/neurochron-detecting-dementia-before-symptoms-appear/" target="_blank" rel="noopener noreferrer"><img class="entry-media" src="neurochron-logo.png" alt="NeuroChron logo"></a>
+          <a href="https://viterbischool.usc.edu/news/2026/05/neurochron-detecting-dementia-before-symptoms-appear/" target="_blank" rel="noopener noreferrer"><img class="entry-media" src="neurochron-brain.jpg" alt="NeuroChron brain imaging product exploration"></a>
           <div>
             <div class="item-top">
               <div>
-                <h3>NeuroChron</h3>
+                <h3 class="project-logo-title"><img src="neurochron-hero.png" alt="NeuroChron"></h3>
                 <p class="role">Product Manager &amp; Business Development</p>
               </div>
               <p class="date">Jan 2026–Present</p>
@@ -5492,11 +8578,11 @@
         </article>
 
         <article class="item project-item visual-item brand-logo-project" id="echo">
-          <img class="entry-media media-contain" src="echo-logo.png" alt="Echo logo">
+          <img class="entry-media media-contain" src="echo-armband.png" alt="Echo wearable armband prototype">
           <div>
             <div class="item-top">
               <div>
-                <h3>Echo</h3>
+                <h3 class="project-logo-title"><img src="echo-logo.png" alt="Echo"></h3>
                 <p class="role">Founder</p>
               </div>
               <p class="date">Jan 2026–Present</p>
@@ -5517,12 +8603,12 @@
         </article>
 
         <article class="item project-item visual-item" id="sustainable-house">
-          <a href="https://drive.google.com/file/d/1S-w4tVDFJnpv1bJy-VwqAPfH178154Wc/view?usp=sharing" target="_blank" rel="noopener noreferrer"><img class="entry-media" src="sustainable-house-project.png" alt="Revit model of a sustainable modular house for refugees and unhoused individuals"></a>
+          <a href="https://drive.google.com/file/d/1S-w4tVDFJnpv1bJy-VwqAPfH178154Wc/view?usp=sharing" target="_blank" rel="noopener noreferrer"><img class="entry-media" src="sustainable-house-project.webp" loading="lazy" alt="Revit model of a sustainable modular house for refugees and unhoused individuals"></a>
           <div>
             <div class="item-top">
               <div>
                 <h3>Innovative Sustainable House</h3>
-                <p class="role">Modular housing for refugees and unhoused individuals</p>
+                <p class="role">construction innovation, Sustainability</p>
               </div>
             </div>
             <details>
@@ -5538,12 +8624,12 @@
         </article>
 
         <article class="item project-item visual-item" id="f1-race-track">
-          <a href="https://drive.google.com/file/d/13ILpviuUZFzr08sry09JdFRsjPpa72zg/view?usp=sharing" target="_blank" rel="noopener noreferrer"><img class="entry-media" src="f1-race-track-project.png" alt="Scale model of a Formula 1 race track designed for Auckland, New Zealand"></a>
+          <a href="https://drive.google.com/file/d/13ILpviuUZFzr08sry09JdFRsjPpa72zg/view?usp=sharing" target="_blank" rel="noopener noreferrer"><img class="entry-media" src="f1-race-track-project.webp" loading="lazy" alt="Scale model of a Formula 1 race track designed for Auckland, New Zealand"></a>
           <div>
             <div class="item-top">
               <div>
                 <h3>Formula 1 Race Track</h3>
-                <p class="role">Architecture and engineering · Auckland, New Zealand</p>
+                <p class="role">Auckland, New Zealand</p>
               </div>
             </div>
             <details>
@@ -5641,8 +8727,8 @@
         <article class="item logo-work-item consulting-work-item" data-company-name="Nike" data-company-url="https://www.nike.com/">
           <div class="item-top"><div class="work-heading"><img class="work-logo" src="nike-quest.png" alt="Nike Quest consulting project"><h3>Nike</h3></div><p class="date">2026</p></div>
           <details><summary>process</summary><div class="process">
-            <div class="note-section"><h4>Brief overview</h4><p>A strategy and product concept developed in response to a Nike innovation brief.</p></div>
-            <div class="note-section"><h4>Contribution</h4><p>Researched the brand and audience, developed the concept direction, and translated the recommendation into a presentation.</p></div>
+            <div class="note-section"><h4>Problem</h4><p>40% of U.S. high school students report persistent feelings of sadness or hopelessness, and Gen Z reports the lowest mental health of any generation.</p></div>
+            <div class="note-section"><h4>Solution</h4><p>Developed Nike Quest, an augmented-reality game built into the Nike app. Players go on local adventures to earn points and unlock rewards such as early access to product drops.</p></div>
             <div class="note-section"><h4>Outcome</h4><p>Delivered a presentation-ready proposal connecting product experience with Nike’s brand context.</p></div>
             <div class="links"><a href="https://drive.google.com/file/d/12rAtRs-E0P6JbVWsaem3WfFKfk9bsvuW/view?usp=sharing" target="_blank" rel="noopener noreferrer">view project</a></div>
           </div></details>
@@ -5659,7 +8745,7 @@
         </article>
 
         <article class="item logo-work-item consulting-work-item" data-company-name="Snap" data-company-url="https://www.snap.com/en-US/spectacles">
-          <div class="item-top"><div class="work-heading"><img class="work-logo" src="spectacles-project-new.png" alt="Snap Spectacles consulting project"><h3>Snap</h3></div><p class="date">2026</p></div>
+          <div class="item-top"><div class="work-heading"><img class="work-logo" src="spectacles-project-new.webp" loading="lazy" alt="Snap Spectacles consulting project"><h3>Snap</h3></div><p class="date">2026</p></div>
           <details><summary>process</summary><div class="process">
             <div class="note-section"><h4>Brief overview</h4><p>An augmented-reality concept developed around Snap Spectacles and spatial interaction.</p></div>
             <div class="note-section"><h4>Contribution</h4><p>Explored user behavior and AR opportunities, structured the experience, and designed the interactive presentation.</p></div>
@@ -5689,7 +8775,7 @@
         </article>
 
         <article class="item logo-work-item consulting-work-item" data-company-name="Mark" data-company-url="https://www.thinkwithmark.com/">
-          <div class="item-top"><div class="work-heading"><img class="work-logo consulting-contain" src="mark-logo-new.png" alt="Mark logo"><h3>Mark</h3></div><p class="date">2026</p></div>
+          <div class="item-top"><div class="work-heading"><img class="work-logo consulting-contain" src="mark-project.webp" alt="Mark II smart highlighter concept"><h3>Mark</h3></div><p class="date">2026</p></div>
           <details><summary>process</summary><div class="process">
             <div class="note-section"><h4>Brief overview</h4><p>A product concept and strategy response developed for Mark.</p></div>
             <div class="note-section"><h4>Contribution</h4><p>Researched the problem space, shaped the product direction, and designed the supporting story and presentation.</p></div>
@@ -5713,7 +8799,6 @@
             <div class="item-top">
               <div>
                 <h3>Memory Care Device <span class="title-role">· Assistive Technology</span></h3>
-                <p class="role">Patient surveillance, SMS alerts, and cognitive development games</p>
               </div>
             </div>
             <details>
@@ -5728,7 +8813,7 @@
           </div>
         </article>
 
-        <article class="item honor-item">
+        <article class="item honor-item" id="conrad-innovator">
           <div class="item-top">
             <div>
               <h3>Conrad Innovator · Drone Defense <span class="title-role">· Public Safety System</span></h3>
@@ -5750,8 +8835,8 @@
           </details>
         </article>
 
-        <article class="item visual-item xr-item">
-          <img class="entry-media" src="xr-fitness-coach-photo.png" alt="Older adult using a virtual reality headset during an XR fitness session">
+        <article class="item visual-item xr-item" id="xr-fitness-trainer">
+          <img class="entry-media" src="xr-fitness-coach-photo.webp" loading="lazy" alt="Older adult using a virtual reality headset during an XR fitness session">
           <div>
             <div class="item-top">
               <div>
@@ -5775,6 +8860,7 @@
           <div class="entry-gallery">
             <img class="entry-media" src="clashxr-gameplay-1.webp" alt="ClashXR mixed-reality gameplay with Supercell-inspired enemies">
             <img class="entry-media" src="clashxr-gameplay-2.webp" alt="ClashXR mixed-reality gameplay showing an X-Bow and skeleton enemies">
+            <img class="entry-media" src="clashxr-gameplay-3.png" alt="ClashXR mixed-reality gameplay with a purple balloon enemy">
           </div>
           <div>
             <div class="item-top">
@@ -5796,8 +8882,8 @@
           </div>
         </article>
 
-        <article class="item visual-item xr-item">
-          <img class="entry-media" src="molded-by-the-rock-xr.png" alt="Molded By The Rock mixed-reality experience showing hand tracking near a virtual rock and fire">
+        <article class="item visual-item xr-item" id="molded-by-the-rock">
+          <img class="entry-media" src="molded-by-the-rock-xr.webp" loading="lazy" alt="Molded By The Rock mixed-reality experience showing hand tracking near a virtual rock and fire">
           <div>
             <div class="item-top">
               <div>
@@ -5826,7 +8912,7 @@
         <div id="hackathon-items"></div>
         <div class="simple-list">
           <div class="simple-row visual-item">
-            <img class="entry-media" src="claude9-artwork.png" alt="Claude9 cloud-themed project artwork">
+            <img class="entry-media" src="claude9-artwork.webp" loading="lazy" alt="Claude9 cloud-themed project artwork">
             <div>
               <h3>Claude9 · MBSA Case Competition</h3>
               <p>AI product and strategy concept developed for the MBSA case competition.</p>
@@ -5842,7 +8928,7 @@
             </div>
           </div>
           <div class="simple-row visual-item">
-            <img class="entry-media" src="promptly-project.png" alt="Promptly project artwork">
+            <img class="entry-media" src="promptly-project.webp" loading="lazy" alt="Promptly project artwork">
             <div>
               <h3>Promptly · AI4Good Hackathon · ShiftSC</h3>
               <p><strong>1st Place.</strong> Developed a coding extension that optimizes AI prompts before submission to reduce repeated queries, token usage, and AI-related energy waste.</p>
@@ -5933,7 +9019,7 @@
           </article>
           <article class="checkout-card">
             <a href="https://sites.google.com/k12.friscoisd.org/reemk/home" target="_blank" rel="noopener noreferrer">
-              <img src="engineering-portfolio-construction.jpeg" alt="Timber structure under construction linking to Reem Khan's engineering portfolio">
+              <img src="engineering-portfolio-construction.webp" loading="lazy" alt="Timber structure under construction linking to Reem Khan's engineering portfolio">
             </a>
             <div class="checkout-copy">
               <h3>Engineering Portfolio</h3>
@@ -5948,6 +9034,11 @@
   </div>
 
   <script>
+    const requestedHashId = window.location.hash.replace('#','');
+    if (requestedHashId){
+      history.replaceState(null,'',window.location.pathname + window.location.search);
+    }
+
     const typedWord = document.getElementById('typed-word');
 
     const words = [
@@ -5991,8 +9082,64 @@
       setTimeout(typeEffect, 250);
     });
 
+    document.querySelectorAll('.note-section h4').forEach(heading => {
+      if (heading.textContent.trim() === 'Brief overview') heading.textContent = 'Overview';
+    });
+
     const projectItems = document.getElementById('project-items');
     document.querySelectorAll('.project-item').forEach(item => projectItems.appendChild(item));
+
+    const memoryCareProject = document.getElementById('memory-care');
+    if (memoryCareProject){
+      memoryCareProject.classList.add('project-item');
+      projectItems.appendChild(memoryCareProject);
+    }
+
+    [
+      'aeris',
+      'neurochron',
+      'echo',
+      'fashion-impact-data',
+      'memory-care',
+      'f1-race-track'
+    ].forEach(id => {
+      const item = document.getElementById(id);
+      if (item) projectItems.appendChild(item);
+    });
+
+    // Keep project cards glanceable: a short description and role are visible,
+    // while the full case-study content remains available to the file viewer.
+    const projectDescriptions = {
+      aeris: "Aeris, an e-nose that detects Parkinson's years in advance.",
+      neurochron: 'Neurodegenerative prediction platform. Upload an MRI scan to detect dementia before symptoms appear.',
+      echo: 'An EMG wearable that translates ASL muscle signals into voice output.',
+      'fashion-impact-data': 'Designed an interactive story showing fashion’s impact on the environment.',
+      'memory-care': 'Developed a patient surveillance device that monitors patients and sends SMS alerts to loved ones and caregivers in case of a fall, provides medication reminders, and cognitive games for memory care.',
+      'f1-race-track': 'Designed an F1 circuit, observation tower, and winners circle in consideration of engineering and architecture principles.',
+      'sustainable-house': 'Modular housing for refugees and unhoused individuals incorporating innovative and sustainable features',
+      clashxr: 'Built a mixed-reality hand-eye coordination game for the Supercell AI Hackathon.',
+      'xr-fitness-trainer': 'Designed an AI fitness coach for augmented-reality training sessions and real-time feedback.',
+      'molded-by-the-rock': 'Designed an XR experience using hand tracking, spatial interaction, and environmental storytelling.'
+    };
+    Object.entries(projectDescriptions).forEach(([id,description]) => {
+      const item = document.getElementById(id);
+      if (!item || item.querySelector(':scope > .project-card-description')) return;
+      const content = item.querySelector(':scope > div:last-child');
+      const details = content?.querySelector(':scope > details');
+      if (!content || !details) return;
+      const paragraph = document.createElement('p');
+      paragraph.className = 'project-card-description';
+      paragraph.textContent = description;
+      details.insertAdjacentElement('beforebegin',paragraph);
+      const links = details.querySelector('.links');
+      if (links){
+        const visibleLinks = links.cloneNode(true);
+        visibleLinks.classList.add('project-links-static');
+        details.insertAdjacentElement('afterend',visibleLinks);
+      }
+      details.classList.add('project-details-preserved');
+    });
+    document.querySelectorAll('#projects details > summary').forEach(summary => summary.remove());
 
     const hackathonItems = document.getElementById('hackathon-items');
     document.querySelectorAll('.hackathon-item').forEach(item => hackathonItems.appendChild(item));
@@ -6002,6 +9149,35 @@
 
     const xrItems = document.getElementById('xr-items');
     document.querySelectorAll('.xr-item').forEach(item => xrItems.appendChild(item));
+
+    // XR cards use the same glanceable treatment as the main project grid:
+    // keep a concise description and visible links, never a collapsed process menu.
+    const xrDescriptions = {
+      'xr-fitness-trainer': 'Designed an AI fitness coach for augmented-reality training sessions and real-time feedback.',
+      clashxr: 'Built a mixed-reality hand-eye coordination game for the Supercell AI Hackathon.',
+      'molded-by-the-rock': 'Designed an XR experience using hand tracking, spatial interaction, and environmental storytelling.'
+    };
+    Object.entries(xrDescriptions).forEach(([id,description]) => {
+      const item = document.getElementById(id);
+      const content = item?.querySelector(':scope > div:last-child');
+      const details = content?.querySelector(':scope > details');
+      if (!item || !content || !details) return;
+      if (!content.querySelector(':scope > .project-card-description')) {
+        const paragraph = document.createElement('p');
+        paragraph.className = 'project-card-description';
+        paragraph.textContent = description;
+        details.insertAdjacentElement('beforebegin',paragraph);
+      }
+      if (!content.querySelector(':scope > .project-links-static')) {
+        const links = details.querySelector('.links');
+        if (links){
+          const visibleLinks = links.cloneNode(true);
+          visibleLinks.classList.add('project-links-static');
+          details.insertAdjacentElement('afterend',visibleLinks);
+        }
+      }
+      details.classList.add('project-details-preserved');
+    });
 
     const honorItems = document.getElementById('honor-items');
     document.querySelectorAll('.honor-item').forEach(item => honorItems.appendChild(item));
@@ -6026,42 +9202,29 @@
     const checkOutSection = document.getElementById('check-out');
     if (recognitionSection && honorsSection){
       const hackathonList = recognitionSection.querySelector('#hackathon-items');
-      recognitionSection.insertBefore(honorsSection,hackathonList);
       const hackathonHeading = document.createElement('h3');
       hackathonHeading.className = 'hackathon-subheading';
       hackathonHeading.textContent = 'hackathons & competitions';
-      honorsSection.insertAdjacentElement('afterend',hackathonHeading);
+      honorsSection.appendChild(hackathonHeading);
+      honorsSection.appendChild(hackathonList);
+      recognitionSection.remove();
     }
-    if (recognitionSection && checkOutSection) recognitionSection.appendChild(checkOutSection);
+
+    /* Repair legacy nesting so each navigation folder owns the screen. */
+    const pageRoot = document.querySelector('.page');
+    ['home','work','projects','intellectual-property','honors','check-out'].forEach(id => {
+      const section = document.getElementById(id);
+      if (pageRoot && section) pageRoot.appendChild(section);
+    });
 
     if (honorItems){
-      const honorSlides = Array.from(honorItems.children);
-      if (honorSlides.length){
-        const controls = document.createElement('div');
-        controls.className = 'honor-slider-controls';
-        controls.innerHTML = '<button type="button" aria-label="Previous honor">←</button><span class="honor-slider-count" aria-live="polite"></span><button type="button" aria-label="Next honor">→</button>';
-        honorItems.insertAdjacentElement('afterend',controls);
-        const [previous,count,next] = controls.children;
-        let honorIndex = 0;
-        function showHonor(index){
-          honorIndex = (index + honorSlides.length) % honorSlides.length;
-          honorSlides.forEach((slide,slideIndex) => {
-            slide.classList.toggle('is-honor-active',slideIndex === honorIndex);
-          });
-          count.textContent = `${honorIndex + 1} / ${honorSlides.length}`;
-        }
-        previous.addEventListener('click',() => showHonor(honorIndex - 1));
-        next.addEventListener('click',() => showHonor(honorIndex + 1));
-        showHonor(0);
-      }
+      // Keep every honor visible in one calm, scannable list.
+      honorItems.querySelectorAll(':scope > *').forEach(slide => slide.classList.add('is-honor-active'));
+      honorItems.parentElement?.querySelector('.honor-slider-controls')?.remove();
     }
 
     const homeSection = document.getElementById('home');
     const sideNavigation = document.querySelector('.side-nav');
-    if (homeSection && sideNavigation){
-      const homeIdentity = homeSection.querySelector('.hero-type');
-      homeIdentity?.insertAdjacentElement('afterend',sideNavigation);
-    }
 
     document.querySelectorAll('#work .logo-work-item summary').forEach(summary => {
       summary.textContent = summary.closest('.consulting-work-item')
@@ -6078,14 +9241,42 @@
         companyLink.textContent = consultingItem.dataset.companyName;
         summary.insertAdjacentElement('afterend',companyLink);
       }
+      if (isConsulting && consultingItem && !consultingItem.querySelector(':scope > .consulting-links-static')){
+        const consultingLinks = consultingItem.querySelector(':scope > details .links');
+        if (consultingLinks){
+          const visibleLinks = consultingLinks.cloneNode(true);
+          visibleLinks.classList.add('consulting-links-static');
+          consultingItem.appendChild(visibleLinks);
+        }
+      }
       const contribution = Array.from(summary.closest('.logo-work-item')?.querySelectorAll('.note-section') || [])
-        .find(section => section.querySelector('h4')?.textContent.trim() === (isConsulting ? 'Brief overview' : 'Contribution'))
+        .find(section => isConsulting || section.querySelector('h4')?.textContent.trim() === 'Contribution')
         ?.querySelector('p')?.textContent;
       if (contribution){
         const overview = document.createElement('p');
         overview.className = 'experience-summary';
         overview.textContent = contribution;
         summary.closest('details')?.insertAdjacentElement('beforebegin',overview);
+      }
+    });
+
+    // Keep the core experience rows glanceable: a concise sentence sits under
+    // each role, while Runway's prototype and deck remain directly accessible.
+    const experienceShortDescriptions = {
+      'Blue Modern Advisory': 'Researched user needs and translated behavioral data into product direction, messaging, and roadmap priorities.',
+      'Runway · Intuit': 'Led research and prototyped a financial simulation experience that helps small businesses compare cash-flow scenarios.'
+    };
+    document.querySelectorAll('#work .logo-work-item:not(.consulting-work-item)').forEach(item => {
+      const description = experienceShortDescriptions[item.dataset.companyLabel];
+      const summary = item.querySelector('.experience-summary');
+      if (description && summary) summary.textContent = description;
+      if (item.id === 'runway' && !item.querySelector(':scope > .experience-links-static')) {
+        const links = item.querySelector(':scope > details .links');
+        if (links){
+          const visibleLinks = links.cloneNode(true);
+          visibleLinks.classList.add('experience-links-static');
+          item.appendChild(visibleLinks);
+        }
       }
     });
 
@@ -6097,6 +9288,24 @@
       company.className = 'experience-company';
       company.textContent = item.dataset.companyLabel;
       title.insertAdjacentElement('afterend',company);
+    });
+
+    const nikeSummary = document.querySelector('#work .consulting-work-item[data-company-name="Nike"] .experience-summary');
+    if (nikeSummary){
+      nikeSummary.textContent = 'Problem: Gen Z is facing a youth mental-health crisis. Solution: Developed Nike Quest, an augmented-reality game in the Nike app where local adventures earn points toward early product access and other rewards.';
+    }
+    const consultingSummaries = {
+      Nike: 'Problem: Gen Z is facing a youth mental-health crisis. Solution: Developed Nike Quest, an augmented-reality game in the Nike app where local adventures earn points toward early product access and other rewards.',
+      Crocs: 'Designed the Crocs SoftShell concept, translating a playful everyday product into a portable food-and-lifestyle experience.',
+      Snap: 'Explored the next Spectacles experience through product research, spatial storytelling, and a presentation-ready concept direction.',
+      'RKS Design': 'Researched product and brand opportunities, then shaped a focused design direction with supporting visual rationale.',
+      'Fleur et Sel': 'Developed a visual and product concept for Fleur et Sel, connecting the brand story to a clear customer experience.',
+      Mark: 'Translated Mark’s product language into a concise concept narrative and visual direction for review.'
+    };
+    document.querySelectorAll('#work .consulting-work-item[data-company-name]').forEach(item => {
+      const summary = item.querySelector(':scope > .experience-summary');
+      const description = consultingSummaries[item.dataset.companyName];
+      if (summary && description) summary.textContent = description;
     });
 
     const workSection = document.getElementById('work');
@@ -6153,14 +9362,80 @@
       experienceGrid.querySelectorAll('.consulting-work-item').forEach(item => {
         consultingCollection.appendChild(item);
       });
+
+      const consultingSlides = Array.from(consultingCollection.children);
+      if (consultingSlides.length){
+        let consultingIndex = 0;
+        const controls = document.createElement('div');
+        controls.className = 'consulting-slider-controls';
+        controls.innerHTML = '<button type="button" aria-label="Previous consulting project">← previous</button><span aria-live="polite"></span><button type="button" aria-label="Next consulting project">next →</button>';
+        consultingCollection.insertAdjacentElement('afterend',controls);
+        const [previous,count,next] = controls.children;
+        const showConsulting = (index) => {
+          consultingIndex = (index + consultingSlides.length) % consultingSlides.length;
+          consultingSlides.forEach((slide,slideIndex) => slide.classList.toggle('is-consulting-active',slideIndex === consultingIndex));
+          count.textContent = `${consultingIndex + 1} / ${consultingSlides.length}`;
+        };
+        previous.addEventListener('click',() => showConsulting(consultingIndex - 1));
+        next.addEventListener('click',() => showConsulting(consultingIndex + 1));
+        showConsulting(0);
+      }
     }
 
     projectsSection.querySelectorAll(':scope > .item').forEach(item => {
       projectItems.appendChild(item);
     });
 
-    const memoryCareProject = document.getElementById('memory-care');
-    if (memoryCareProject) projectItems.appendChild(memoryCareProject);
+    const legacyMemoryCareProject = document.getElementById('memory-care');
+    if (legacyMemoryCareProject) projectItems.appendChild(legacyMemoryCareProject);
+
+    const conradProject = document.getElementById('conrad-innovator');
+    if (conradProject){
+      const content = conradProject.querySelector(':scope > details');
+      if (content){
+        const shortDescription = document.createElement('p');
+        shortDescription.className = 'project-card-description';
+        shortDescription.textContent = 'Designed a real-time public-safety system for firearm detection, threat monitoring, and rapid response; recognized as a Conrad Innovator.';
+        content.insertAdjacentElement('beforebegin',shortDescription);
+        const links = content.querySelector('.links');
+        if (links){
+          const visibleLinks = links.cloneNode(true);
+          visibleLinks.classList.add('project-links-static');
+          content.insertAdjacentElement('afterend',visibleLinks);
+        }
+        content.classList.add('project-details-preserved');
+      }
+    }
+
+    // Organize projects into three clear groups instead of one long mixed list.
+    const healthHeading = projectsSection.querySelector(':scope > .project-group');
+    const xrHeading = projectsSection.querySelectorAll(':scope > .project-group')[1];
+    if (healthHeading) healthHeading.textContent = 'health';
+    if (xrHeading) xrHeading.textContent = 'xr';
+    const otherHeading = document.createElement('h3');
+    otherHeading.className = 'project-group';
+    otherHeading.textContent = 'other';
+    const otherGrid = document.createElement('div');
+    otherGrid.id = 'other-items';
+    otherGrid.className = 'project-subgrid project-visual-grid';
+    const otherIds = new Set(['sustainable-house','f1-race-track','fashion-impact-data']);
+    Array.from(projectItems.children).forEach(item => {
+      if (otherIds.has(item.id)) otherGrid.appendChild(item);
+    });
+    // Keep the intended reading order explicit: Health → XR → Other.
+    ['aeris','neurochron','echo','memory-care'].forEach(id => {
+      const item = document.getElementById(id);
+      if (item) projectItems.appendChild(item);
+    });
+    ['fashion-impact-data','f1-race-track','sustainable-house'].forEach(id => {
+      const item = document.getElementById(id);
+      if (item) otherGrid.appendChild(item);
+    });
+    if (xrItems && xrHeading){
+      xrHeading.insertAdjacentElement('afterend',xrItems);
+      xrItems.insertAdjacentElement('afterend',otherHeading);
+      otherHeading.insertAdjacentElement('afterend',otherGrid);
+    }
 
     function createProjectCarousel(track,label){
       const items = Array.from(track.querySelectorAll(':scope > .item'));
@@ -6260,8 +9535,11 @@
       track.insertAdjacentElement('afterend',controls);
     }
 
-    addProjectStripControls(projectItems);
-    addProjectStripControls(xrItems);
+    // Projects stay fully visible as grids; no horizontal arrow controls.
+    document.querySelectorAll('#projects .project-strip-controls').forEach(control => control.remove());
+    document.querySelectorAll('#projects details > summary').forEach(summary => {
+      summary.textContent = 'learn more';
+    });
 
     const galleryItems = [
       ...projectItems.querySelectorAll(':scope > .item'),
@@ -6355,10 +9633,29 @@
       fileGallery.appendChild(card);
     });
 
-    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    /* Final, explicit project order after all legacy organization code runs. */
+    [
+      'aeris',
+      'neurochron',
+      'echo',
+      'fashion-impact-data',
+      'memory-care',
+      'f1-race-track',
+      'sustainable-house'
+    ].forEach(id => {
+      const item = document.getElementById(id);
+      if (item) projectItems.appendChild(item);
+    });
+
+    let navLinks = Array.from(document.querySelectorAll('.nav-link'));
     const folderBreadcrumb = document.querySelector('.folder-breadcrumb');
     const breadcrumbHome = document.querySelector('.breadcrumb-home');
     const aboutSticky = document.getElementById('about-note');
+    const page = document.querySelector('.page');
+    const shell = document.querySelector('.shell');
+    const landingHomeSection = document.getElementById('home');
+    const landingSideNavigation = document.querySelector('.side-nav');
+    const heroType = landingHomeSection?.querySelector('.hero-type');
 
     function setActive(sectionId){
       navLinks.forEach(link => {
@@ -6367,26 +9664,30 @@
     }
 
     function showPane(sectionId,updateHash=true){
-      if (sectionId === 'about'){
-        document.querySelectorAll('.page > section').forEach(section => {
-          section.classList.toggle('active-pane',section.id === 'home');
-        });
-        aboutSticky.classList.add('is-visible');
-        setActive('about');
-        folderBreadcrumb.classList.add('is-visible');
-        if (updateHash) history.replaceState(null,'','#about');
-        setTimeout(() => aboutSticky.scrollIntoView({behavior:'smooth',block:'nearest'}),40);
-        return;
-      }
-
+      if (sectionId === 'about') sectionId = 'work';
       const pane = document.getElementById(sectionId);
       if (!pane) return;
-      aboutSticky.classList.remove('is-visible');
+
+      /* On the landing page, place the folder row directly beneath the
+         animated “building across …” line. Restore it to the global shell
+         on every inner page so the compact top navigation remains unchanged. */
+      if (sectionId === 'home'){
+        heroType?.insertAdjacentElement('afterend',landingSideNavigation);
+      } else if (shell && landingSideNavigation && folderBreadcrumb){
+        shell.insertBefore(landingSideNavigation,folderBreadcrumb);
+      }
+
+      document.body.classList.toggle('home-pane-active',sectionId === 'home');
+      if (sectionId !== 'home') setDrawingMode(false);
+      aboutSticky?.classList.toggle('is-visible',sectionId === 'home');
       document.querySelectorAll('.page > section').forEach(section => {
-        const shouldShow = sectionId === 'home'
-          ? section.id === 'home'
-          : section.id === 'home' || section === pane;
-        section.classList.toggle('active-pane',shouldShow);
+        const isActive = section === pane;
+        section.classList.toggle('active-pane',isActive);
+        if (isActive){
+          section.style.removeProperty('display');
+        } else {
+          section.style.setProperty('display','none','important');
+        }
       });
       if (sectionId !== 'home') pane.classList.add('inline-folder-note');
       const activeLink = navLinks.find(link => link.dataset.section === sectionId);
@@ -6397,12 +9698,84 @@
       setActive(sectionId);
       folderBreadcrumb.classList.toggle('is-visible',sectionId !== 'home');
       if (sectionId === 'home'){
-        window.scrollTo({top:0,behavior:'smooth'});
+        window.scrollTo({top:0,behavior:'instant'});
       } else {
-        setTimeout(() => pane.scrollIntoView({behavior:'smooth',block:'start'}),40);
+        setTimeout(() => pane.scrollIntoView({behavior:'instant',block:'start'}),0);
       }
       if (updateHash) history.replaceState(null,'',`#${sectionId}`);
     }
+
+    const drawToggle = document.getElementById('draw-toggle');
+    const drawingTools = document.getElementById('drawing-tools');
+    const drawingCanvas = document.getElementById('drawing-canvas');
+    const drawColor = document.getElementById('draw-color');
+    const drawUndo = document.getElementById('draw-undo');
+    const drawClear = document.getElementById('draw-clear');
+    const drawExit = document.getElementById('draw-exit');
+    const drawContext = drawingCanvas?.getContext('2d');
+    const drawingPaths = [];
+    let drawingActive = false;
+    let currentPath = null;
+
+    function resizeDrawingCanvas(){
+      if (!drawingCanvas || !drawContext) return;
+      const ratio = window.devicePixelRatio || 1;
+      drawingCanvas.width = window.innerWidth * ratio;
+      drawingCanvas.height = window.innerHeight * ratio;
+      drawContext.setTransform(ratio,0,0,ratio,0,0);
+      drawContext.lineCap = 'round';
+      drawContext.lineJoin = 'round';
+      redrawDrawing();
+    }
+
+    function redrawDrawing(){
+      if (!drawContext) return;
+      drawContext.clearRect(0,0,window.innerWidth,window.innerHeight);
+      drawingPaths.forEach(path => {
+        if (!path.points.length) return;
+        drawContext.beginPath();
+        drawContext.strokeStyle = path.color;
+        drawContext.globalAlpha = .72;
+        drawContext.lineWidth = 3;
+        path.points.forEach((point,index) => index ? drawContext.lineTo(point.x,point.y) : drawContext.moveTo(point.x,point.y));
+        drawContext.stroke();
+      });
+      drawContext.globalAlpha = 1;
+    }
+
+    function setDrawingMode(enabled){
+      drawingActive = Boolean(enabled && document.getElementById('home')?.classList.contains('active-pane'));
+      drawToggle?.classList.toggle('is-active',drawingActive);
+      drawingTools?.toggleAttribute('hidden',!drawingActive);
+      drawingCanvas?.classList.toggle('is-active',drawingActive);
+      drawToggle?.setAttribute('aria-pressed',String(drawingActive));
+      if (!drawingActive) currentPath = null;
+    }
+
+    drawToggle?.addEventListener('click',() => setDrawingMode(!drawingActive));
+    drawExit?.addEventListener('click',() => setDrawingMode(false));
+    drawClear?.addEventListener('click',() => { drawingPaths.length = 0; redrawDrawing(); });
+    drawUndo?.addEventListener('click',() => { drawingPaths.pop(); redrawDrawing(); });
+    drawingCanvas?.addEventListener('pointerdown',event => {
+      if (!drawingActive) return;
+      event.preventDefault();
+      drawingCanvas.setPointerCapture(event.pointerId);
+      currentPath = {color:drawColor.value,points:[{x:event.clientX,y:event.clientY}]};
+      drawingPaths.push(currentPath);
+    });
+    drawingCanvas?.addEventListener('pointermove',event => {
+      if (!currentPath) return;
+      event.preventDefault();
+      currentPath.points.push({x:event.clientX,y:event.clientY});
+      redrawDrawing();
+    });
+    drawingCanvas?.addEventListener('pointerup',event => {
+      currentPath = null;
+      if (drawingCanvas.hasPointerCapture(event.pointerId)) drawingCanvas.releasePointerCapture(event.pointerId);
+    });
+    drawingCanvas?.addEventListener('pointercancel',() => { currentPath = null; });
+    window.addEventListener('resize',resizeDrawingCanvas);
+    resizeDrawingCanvas();
 
     navLinks.forEach(link => {
       link.addEventListener('click', (event) => {
@@ -6425,8 +9798,8 @@
       {container:aboutSticky,next:'work',label:'/experience'},
       {container:document.getElementById('work'),next:'projects',label:'/projects'},
       {container:document.getElementById('projects'),next:'intellectual-property',label:'/patents'},
-      {container:document.getElementById('intellectual-property'),next:'hackathons',label:'/honors'},
-      {container:document.getElementById('hackathons'),next:'home',label:'/home'}
+      {container:document.getElementById('intellectual-property'),next:'honors',label:'/honors'},
+      {container:document.getElementById('honors'),next:'home',label:'/home'}
     ];
 
     sectionFlow.forEach(({container,next,label}) => {
@@ -6448,6 +9821,7 @@
     const themeToggle = document.querySelector('.theme-toggle');
     const themeWheelKnob = document.querySelector('.theme-wheel-knob');
     const savedTheme = localStorage.getItem('reem-portfolio-theme');
+    const paletteHues = [8, 28, 42, 152, 195, 220, 265, 320];
     let selectedHue = Number(localStorage.getItem('reem-portfolio-hue')) || 42;
     let wheelDrag = null;
     // Start new visitors in the clean light theme, while respecting a theme
@@ -6455,7 +9829,12 @@
     if (savedTheme !== 'dark') document.body.classList.add('light-mode');
 
     function applyAccentHue(hue){
-      selectedHue = (hue + 360) % 360;
+      const normalizedHue = (hue + 360) % 360;
+      selectedHue = paletteHues.reduce((closest,current) => {
+        const currentDistance = Math.min(Math.abs(current-normalizedHue),360-Math.abs(current-normalizedHue));
+        const closestDistance = Math.min(Math.abs(closest-normalizedHue),360-Math.abs(closest-normalizedHue));
+        return currentDistance < closestDistance ? current : closest;
+      },paletteHues[0]);
       document.documentElement.style.setProperty('--accent',`hsl(${selectedHue} 78% 52%)`);
       document.documentElement.style.setProperty('--accent-red',`hsl(${selectedHue} 78% 48%)`);
       applySurfaceHue();
@@ -6527,11 +9906,13 @@
     themeToggle.addEventListener('keydown',(event) => {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowDown'){
         event.preventDefault();
-        applyAccentHue(selectedHue-5);
+        const index = paletteHues.indexOf(selectedHue);
+        applyAccentHue(paletteHues[(index - 1 + paletteHues.length) % paletteHues.length]);
         updateThemeToggle();
       } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp'){
         event.preventDefault();
-        applyAccentHue(selectedHue+5);
+        const index = paletteHues.indexOf(selectedHue);
+        applyAccentHue(paletteHues[(index + 1) % paletteHues.length]);
         updateThemeToggle();
       } else if (event.key === 'Enter' || event.key === ' '){
         event.preventDefault();
@@ -6561,7 +9942,152 @@
       showPane('intellectual-property');
     });
 
-    const initialId = window.location.hash.replace('#','');
+    /* Rebuild the Experience route as one semantic, data-driven résumé list. */
+    const experiences = [
+      {
+        company: 'Blue Modern Advisory Consulting',
+        role: 'Product and GTM Engineer',
+        date: 'Jan 2026 – Present',
+        bullets: [
+          'Developed an AI relationship intelligence platform analyzing behavioral and communication data to generate proactive user insights.',
+          'Led early go-to-market strategy, translating user needs, market research, and technical constraints into product messaging and roadmap recommendations.'
+        ]
+      },
+      {
+        company: 'Intuit',
+        role: 'Product Manager, Contract',
+        date: 'Jan 2026 – May 2026',
+        bullets: ['Spearheaded product strategy, user research, and development of Runway, delivering a functional cash-flow simulation prototype for small businesses.']
+      },
+      {
+        company: 'Aluna Coaching + Retreats',
+        role: 'Business Development and Growth',
+        date: 'June 2025 – Present',
+        bullets: ['Drove and scaled client acquisition through high-impact content, digital marketing, targeted outreach, and data-driven campaigns.']
+      },
+      {
+        company: 'Charmaine Hamp Coaching',
+        role: 'Head of Growth',
+        date: 'May 2025 – Present',
+        bullets: ['Led growth and social media initiatives to strengthen brand positioning, increase audience engagement, support client acquisition, and generate leads.']
+      },
+      {
+        company: 'DiscoverSTEM',
+        role: 'Lead Mentor and Innovator',
+        date: 'Jan 2022 – Jul 2025',
+        bullets: ['Mentored hundreds of K–12 students from early ideation through invention development, resulting in patent filings.']
+      },
+      {
+        company: 'GrasshoppHER',
+        role: 'Head of Outreach',
+        date: 'Aug 2021 – Jun 2025',
+        bullets: ['Built outreach campaigns, created pitch decks and founder resources, strengthened partnerships, and led engagement initiatives supporting organizational growth.']
+      }
+    ];
+    const workRoute = document.getElementById('work');
+    if (workRoute){
+      workRoute.innerHTML = `
+        <header class="experience-profile" aria-label="Reem Khan profile">
+          <img class="experience-profile-photo" src="about-reem-usc.jpeg" alt="Reem Khan at USC commencement">
+          <div class="experience-profile-copy">
+            <h1>Reem Khan</h1>
+            <p class="experience-profile-subtitle">Product Strategist, Inventor, and Creative Technologist</p>
+            <a class="experience-profile-site" href="https://reem-khan.com" target="_blank" rel="noopener noreferrer">reem-khan.com</a>
+          </div>
+        </header>
+        <section class="profile-about" aria-labelledby="profile-about-title">
+          <h2 id="profile-about-title">About me</h2>
+          <div class="profile-about-copy"></div>
+          <div class="about-photo-grid"></div>
+          <div class="profile-contact-row"></div>
+        </section>
+        <section class="work-experience" aria-labelledby="work-experience-title">
+          <p class="section-label" id="work-experience-title">Work Experience</p>
+          <div class="experience-list">
+            ${experiences.map((experience) => `
+              <article class="experience-item"${experience.company === 'Intuit' ? ' id="runway"' : ''}>
+                <div class="experience-date">${experience.date}</div>
+                <div class="experience-content">
+                  <h3 class="experience-title">${experience.role}<span class="experience-company-inline"> at ${experience.company}</span></h3>
+                  <ul class="experience-bullets">${experience.bullets.map((bullet) => `<li>${bullet}</li>`).join('')}</ul>
+                </div>
+              </article>
+            `).join('')}
+          </div>
+        </section>
+        <div class="organizations-mount"></div>
+      `;
+      const sourceIntro = aboutSticky?.querySelector('.intro');
+      const sourceGallery = aboutSticky?.querySelector('.about-gallery');
+      const sourceContact = aboutSticky?.querySelector('.about-contact');
+      const sourceOrganizations = aboutSticky?.querySelector('.about-organizations');
+      const profileAbout = workRoute.querySelector('.profile-about');
+      if (sourceIntro && profileAbout) profileAbout.querySelector('.profile-about-copy')?.append(sourceIntro.cloneNode(true));
+      if (sourceGallery && profileAbout){
+        const gallery = sourceGallery.cloneNode(true);
+        gallery.className = 'about-photo-grid';
+        profileAbout.querySelector('.about-photo-grid')?.replaceWith(gallery);
+      }
+      if (sourceContact && profileAbout){
+        const contact = sourceContact.cloneNode(true);
+        contact.className = 'profile-contact-row';
+        profileAbout.querySelector('.profile-contact-row')?.replaceWith(contact);
+      }
+      if (sourceOrganizations){
+        sourceOrganizations.classList.remove('about-organizations');
+        sourceOrganizations.classList.add('organizations-section');
+        const heading = sourceOrganizations.querySelector('#organizations-heading');
+        if (heading) heading.textContent = 'Organizations & Community';
+        workRoute.querySelector('.organizations-mount')?.replaceWith(sourceOrganizations);
+      }
+      aboutSticky?.remove();
+    }
+
+    /* Consulting is its own folder, separate from the résumé-style Experience route. */
+    const consultingEntries = [
+      ['Nike Quest','nike-quest.png','Developed an augmented-reality adventure in the Nike app where local exploration earns points toward early product access.','https://www.nike.com/','https://drive.google.com/file/d/12rAtRs-E0P6JbVWsaem3WfFKfk9bsvuW/view?usp=sharing'],
+      ['Crocs SoftShell','crocs-softshell-new.png','Designed a playful portable food-and-lifestyle concept inspired by Crocs’ familiar form language.','https://www.crocs.com/c/footwear','https://www.figma.com/proto/zmVa6EccQdG1kJdjkc2W1h/IF-Crocs-Collab?node-id=1-38&scaling=scale-down&content-scaling=fixed&t=J1JID34zwUkaF47A-1'],
+      ['Snap Spectacles','spectacles-project-new.webp','Explored a next-generation Spectacles experience through product research and spatial storytelling.','https://www.snap.com/en-US/spectacles','https://www.figma.com/proto/N1dMaGAGcrvNYDhfioIviy/IF-Snap-AR-G4?node-id=195-8&starting-point-node-id=195%3A8&t=jDrp1x8Nb2mfnMiM-1'],
+      ['RKS Design','rks-design.jpg','Shaped a focused product and brand direction through research, synthesis, and visual rationale.','https://rksdesign.com/','https://rksdesign.com/'],
+      ['Fleur et Sel','fleurs-et-sel.webp','Developed a visual and product concept connecting the brand story to a clear customer experience.','https://www.fleursetsel.com/','https://www.canva.com/design/DAGyzHywzWc/3AMJ1OtyiRkty6T4WVhwUg/view?utm_content=DAGyzHywzWc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbfc6277743'],
+      ['Mark','mark-project.webp','Translated Mark’s product language into a concise concept narrative and visual direction.','https://www.thinkwithmark.com/','https://www.figma.com/deck/4LjXcOS6QpEFaoawUkOG5X/IYA-IF-Mark?node-id=1-544&t=GAxx8R2GOIBnvI4R-1']
+    ];
+    if (!document.getElementById('consulting')){
+      const consultingSection = document.createElement('section');
+      consultingSection.id = 'consulting';
+      consultingSection.innerHTML = `
+        <div class="consulting-page-header">
+          <p class="section-label">Selected consulting</p>
+          <h2>consulting</h2>
+        </div>
+        <div class="consulting-grid" aria-label="Consulting projects">
+          ${consultingEntries.map(([title,image,description,companyUrl,deckUrl]) => `
+            <article class="consulting-card">
+              <a href="${companyUrl}" target="_blank" rel="noopener noreferrer"><img src="${image}" loading="lazy" alt="${title} consulting project"></a>
+              <h3><a href="${companyUrl}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+              <p>${description}</p>
+              <a class="consulting-card-link" href="${deckUrl}" target="_blank" rel="noopener noreferrer">view project ↗</a>
+            </article>
+          `).join('')}
+        </div>
+      `;
+      const projectsPane = document.getElementById('projects');
+      if (projectsPane) page.insertBefore(consultingSection,projectsPane);
+      else page.appendChild(consultingSection);
+      const workLink = document.querySelector('.nav-link[data-section="work"]');
+      const consultingLink = document.querySelector('.nav-link[data-section="consulting"]') || document.createElement('a');
+      if (!consultingLink.parentElement){
+        consultingLink.className = 'nav-link';
+        consultingLink.href = '#consulting';
+        consultingLink.dataset.section = 'consulting';
+        consultingLink.innerHTML = '<span class="dot" aria-hidden="true"></span><span>consulting</span>';
+        workLink?.insertAdjacentElement('afterend',consultingLink);
+      }
+      navLinks = Array.from(document.querySelectorAll('.nav-link'));
+      consultingLink.addEventListener('click',(event) => { event.preventDefault(); showPane('consulting'); });
+    }
+
+    const initialId = requestedHashId;
     const initialTarget = initialId ? document.getElementById(initialId) : null;
     if (initialId === 'about'){
       showPane('about',false);
@@ -6575,6 +10101,13 @@
     } else {
       showPane('home',false);
     }
+
+    window.addEventListener('load',() => {
+      setTimeout(() => {
+        document.querySelector('.page > section.active-pane')
+          ?.scrollIntoView({behavior:'instant',block:'start'});
+      },50);
+    });
   </script>
 </body>
 </html>
